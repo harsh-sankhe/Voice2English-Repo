@@ -89,9 +89,9 @@ Main idea is to find the values of parameters (weight `w` and bias `b`) to minim
 
 ![Nested Loops](images/image-8.png)
 
-> When working with `m` training examples and multiple input features, we require two nested loops: one loop to iterate over all `m` examples and another loop to iterate over the `nₓ` input features of each example.
+When working with `m` training examples and multiple input features, we require two nested loops: one loop to iterate over all `m` examples and another loop to iterate over the `nₓ` input features of each example.
 
-> This approach becomes inefficient and slow, especially for large datasets, as it increases computation time significantly. To overcome this, we use **vectorization**.
+This approach becomes inefficient and slow, especially for large datasets, as it increases computation time significantly. To overcome this, we use **vectorization**.
 
 ---
 
