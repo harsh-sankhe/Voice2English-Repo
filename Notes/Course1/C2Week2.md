@@ -1,4 +1,4 @@
-# 1. Representation of Image in Computer
+# Representation of Image in Computer
 
 ![Image Vector](images/image.png)
 
@@ -6,13 +6,13 @@ Where the image vector is the feature vector of size nₓ.
 
 ---
 
-# 2. Binary Classification
+# Binary Classification
 
 Binary classification is a type of supervised machine learning task where the model predicts one of two possible classes (outputs either 0 or 1, yes or no, true or false).
 
 ---
 
-# 3. Notation
+# Notation
 
 - An example is represented by `(x, y)` where `x` is input feature vector described above and `y` output label is binary (0 or 1), used in binary classification.
 - `X ∈ ℝⁿˣ x m`: Is an input matrix where each column is an input feature vector with `nₓ` features, and there are `m` examples in total.  
@@ -26,7 +26,7 @@ Binary classification is a type of supervised machine learning task where the mo
 
 ---
 
-# 4. Logistic Regression (A Type of Algorithm Used for Binary Classification)
+# Logistic Regression
 
 Logistic regression is used for binary classification problems — where the output label `y ∈ {0, 1}`.
 
@@ -40,7 +40,7 @@ Where:
 
 ![Sigmoid and Parameters](images/image-3.png)
 
-### Cost and Loss Function in Logistic Regression
+## Cost and Loss Function in Logistic Regression
 
 To train the parameters `w` and `b` we need a cost function.
 
@@ -56,7 +56,7 @@ We adjust the values of the parameters `w` and `b` to minimize the cost function
 
 ![Cost Function](images/image-5.png)
 
-### Gradient Descent
+## Gradient Descent
 
 Gradient Descent is an algorithm used to minimize a cost function (error) by finding the direction of the steepest descent.
 
@@ -64,7 +64,7 @@ Gradient Descent is an algorithm used to minimize a cost function (error) by fin
 
 ---
 
-# 5. Computation Graph and Computing Derivative
+# Computation Graph and Computing Derivative
 
 Computation of a neural network can be divided into **forward propagation** and **backward propagation**.
 
@@ -73,7 +73,7 @@ Computation of a neural network can be divided into **forward propagation** and 
 
 ---
 
-# 6. Logistic Regression Derivatives
+# Logistic Regression Derivatives
 
 Main idea is to find the values of parameters (weight `w` and bias `b`) to minimize the loss function `J(w, b)` in logistic regression and improve the model’s accuracy.
 
@@ -95,7 +95,7 @@ Main idea is to find the values of parameters (weight `w` and bias `b`) to minim
 
 ---
 
-# 7. Vectorization
+# Vectorization
 
 - It is used to eliminate explicit loops in the code and allows us to perform operations on entire vectors or matrices at once.
 - Deep learning models often deal with large datasets and to train efficiently, we need to speed up computations and thus we use vectorization.
@@ -109,10 +109,10 @@ Main idea is to find the values of parameters (weight `w` and bias `b`) to minim
 
 ---
 
-# 8. Broadcasting
+# Broadcasting
 
 **Broadcasting** is a powerful feature in NumPy that allows arithmetic operations between arrays of different shapes without explicitly replicating data.
 
-### General Principle of Broadcasting
+## General Principle of Broadcasting
 
 ![Broadcasting](images/image-12.png)
