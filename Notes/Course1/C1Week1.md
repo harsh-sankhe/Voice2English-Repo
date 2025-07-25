@@ -8,7 +8,7 @@ It consists of three layers:
 - **Hidden Layer** – Performs computation on the input `X` using interconnected neurons and parameters. It applies weights and biases to learn patterns in the data. There can be multiple hidden layers.
 - **Output Layer** – Generates the final output `Y` based on the input and features learned in the hidden layer by neurons.
 
-![Neural Network](image.png)
+![Neural Network](images/image.png)
 
 ## Neural Network Types
 
@@ -16,15 +16,16 @@ It consists of three layers:
 2. **RNN (Recurrent Neural Network)** – Designed for processing sequential data (where output depends on previous inputs).
 3. **LSTM (Long Short-Term Memory)** – A type of RNN that can learn long-term dependencies.
 
-![Neural Network Types](image-1.png)
-
 # SUPERVISED LEARNING
 
 Supervised learning is a type of machine learning where the model is trained using labeled data. For every input `X`, the correct output `Y` is provided so the model learns to map inputs to outputs — i.e., it learns from example (input, output) pairs for accurate future prediction on unseen data.
 
-![Supervised Learning](image-2.png)
+![Supervised Learning](images/image-2.png)
 
-![Training Data](image-3.png)
+# Scale Drives Deep Learning
+
+![Training Data](images/image-3.png)
 
 - We need a **large amount of data** to train a neural network effectively.
 - More data helps the model learn better patterns, which leads to **higher accuracy** in outputs.
+
