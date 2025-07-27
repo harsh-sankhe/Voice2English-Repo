@@ -1,16 +1,9 @@
 # Binary Classification
 Binary classification is a type of task where a model (like a neural network) learns to classify data into one of two categories.
-
-How it works in a neural network:
-You give it an input (like an image or some data) 
-
-It runs through the neural network
-
 The output is usually a single number between 0 and 1
 
-Closer to 0 → class 0
-
-Closer to 1 → class 1
+- Closer to 0 → class 0
+- Closer to 1 → class 1
 
 We usually use an activation function called sigmoid at the end to squash the output between 0 and 1.
 
