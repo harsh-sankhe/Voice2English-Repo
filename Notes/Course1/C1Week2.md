@@ -59,6 +59,7 @@ Here:
 #### Parameters of Logistic Regression
 - Weights (Coefficients): w is a vector assigned to each input feature.
 - Bias (Intercept): b are the parameters for logistic regressions they are adjusted during the learning process to make predictions more accurate.
+- z = wᵀx + b (Here z is raw output before applying any activation functions)
 
 ### Loss Function
 The loss function used in logistic regression is called Log Loss or Binary Cross-Entropy Loss
@@ -99,4 +100,49 @@ It is an optimization algorithm used to minimize a cost function by finding the 
 ### Derivatives
 Derivative is nothing but slope of a function which gives us height/width. It remains constant for all value.
 
-<img src="Images/DerivativeIntuation.png" alt="Derivative" width="800"> 
+<img src="Images/DerivativeIntuation.png" alt="Derivative" width="800">
+
+---
+
+### Computation Graph
+A computation graph is a visual way to break down and represent a mathematical function as a series of simple operations (like add, multiply, etc.) — step by step.
+
+It helps us:
+- Understand how data flows through a model 
+- Calculate derivatives (for training!) using backpropagation 
+
+---
+
+# Logistic Regression Derivatives
+Backpropogation: Backpropagation is the algorithm used to compute gradients of the loss function with respect to each parameter (like weights and biases) in a neural network — so that we can update them and reduce the error.
+
+<img src="Images/LRDerivative.png" alt="LRDerivative" width="800">
+
+- Objective: Find the best parameter values (weights and bias) to minimize the negative log-likelihood loss function in logistic regression.
+- Initial Guess: Start with random initial values for weights and bias.
+- Calculate Predictions: Compute predictions using the logistic regression model with current parameter values.
+- Compute Loss: Evaluate the negative log-likelihood loss function using the predictions.
+- Derivatives Calculation:
+  - Loss Derivative w.r.t Predictions: Calculate how the loss changes with respect to the predictions.
+  - Loss Derivative w.r.t Parameters: Use the chain rule to calculate how the loss changes with respect to each parameter (weights and bias).
+- Parameter Update:
+  - Compute Step Size: Multiply each derivative by a small learning rate to determine the step size.
+  - Adjust Parameters: Subtract the step size from the current parameter values to get updated weights and bias.
+- Iterate: Repeat steps 3-6 until the parameter changes are very small or a maximum number of iterations is reached.
+- Model Training: Through these iterations, gradient descent optimizes the parameters, reducing the loss and improving the model's prediction accuracy on new data.
+
+### Gradient Descent on m examples
+We have:
+- m examples (like m images or data points)
+- Each input example has n features (like 12288 if it's a 64×64×3 image)
+We want to train a logistic regression model on all of them using vectorized math. Hence we will learn vectorization to eliminate the for loops.
+
+<img src="Images/LRmExample.png" alt="LRmExamples" width="800">
+
+---
+
+# Vectorization
+
+
+
+
