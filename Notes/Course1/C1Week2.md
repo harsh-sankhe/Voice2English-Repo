@@ -40,7 +40,7 @@ Here:
 - **Sigmoid function** is used to bound the value between 0 to 1.
 - Unlike linear regression, which predicts a continuous output, logistic regression predicts probabilities of the outcome that are bounded between 0 and 1. This is achieved using the logistic function (also known as the sigmoid function).
   
-<img src="Images/LRSigmoidEq.png" alt="LR2" width="800">
+<img src="Images/LRSigmoidEq.png" alt="LR2" width="800" height="auto">
 
 #### Parameters of Logistic Regression
 - Weights (Coefficients): w is a vector assigned to each input feature.
