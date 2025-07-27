@@ -2,11 +2,11 @@
 
 ![Image Vector](images/image.png)
 
-Where the image vector is the feature vector of size nₓ.
+An image is represented in a computer as a grid of numbers (pixel) . This grid can be converted into a vector by flattening all pixel values into a single column. The resulting image vector becomes the feature vector of the image of size nₓ (e.g., for a 64×64 RGB image, nₓ = 64 × 64 × 3 = 12288). 
 
 ---
 
-# Binary Classification
+## Binary Classification
 
 Binary classification is a type of supervised machine learning task where the model predicts one of two possible classes (outputs either 0 or 1, yes or no, true or false).
 
@@ -35,8 +35,9 @@ Logistic regression is used for binary classification problems — where the out
 Where:
 - `ŷ` is the probability that the output label `y = 1`, given the input `x`.
 - `x` is the input feature vector.
-- **Sigmoid function** is used to bound the value between 0 to 1.
-- `w` is a vector representing weights assigned to each input feature and `b` (bias term) are the parameters for logistic regression. These parameters and bias term are adjusted during the learning process to make our predictions as accurate as possible.
+- *Sigmoid function* is the activation function used to bound the value between 0 to 1.
+- `w` is a vector representing weights assigned to each input feature and `b` (bias term) are the parameters for logistic regression.
+These parameters and bias term are adjusted during the learning process to make our predictions as accurate as possible.
 
 ![Sigmoid and Parameters](images/image-3.png)
 
@@ -64,11 +65,12 @@ Gradient Descent is an algorithm used to minimize a cost function (error) by fin
 
 ---
 
-# Computation Graph and Computing Derivative
+## Computation Graph and Computing Derivative
 
 Computation of a neural network can be divided into **forward propagation** and **backward propagation**.
 
 - A **computation graph** is a graphical representation of all the operations and variables involved in computing a function and helps us understand how to compute the function step by step during the forward pass.
+
 - During the **backward pass**, the graph is used to efficiently compute derivatives using the chain rule. These derivatives tell us how one variable affects another and thus are essential for minimizing error and updating model parameters during training.
 
 ---
@@ -109,10 +111,10 @@ This approach becomes inefficient and slow, especially for large datasets, as it
 
 ---
 
-# Broadcasting
+## Broadcasting
 
 **Broadcasting** is a powerful feature in NumPy that allows arithmetic operations between arrays of different shapes without explicitly replicating data.
 
-## General Principle of Broadcasting
+### General Principle of Broadcasting
 
 ![Broadcasting](images/image-12.png)

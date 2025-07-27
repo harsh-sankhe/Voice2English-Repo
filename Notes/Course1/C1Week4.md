@@ -43,23 +43,23 @@ It begins by calculating the error between the predicted output and the actual v
 
 Training a deep neural network involves four main steps:
 
-### 1. Forward Propagation
+### 1.Forward Propagation
 
 •	Input data flows through the network (from input layer to output via multiple hidden layers).  
 •	At each layer activations are computed using weights, bias, and activation functions (like ReLU or Sigmoid).  
 •	These activated outputs are passed to the next layer, and the final output becomes the model's prediction.  
 •	Outputs of each layer are stored for use in backpropagation.
 
-### 2. Loss Calculation
+### 2.Loss Calculation
 
 •	The model’s prediction is compared to actual values using a loss function. This loss measures the error between predicted and true values. Smaller the loss better is the model’s performance
 
-### 3. Backward Propagation
+### 3.Backward Propagation
 
 •	Gradients (partial derivatives) of the loss w.r.t weights and biases are computed using the chain rule.  
 •	These gradients flow back from output to input through the network to evaluate how each parameter affects the loss.
 
-### 4. Parameter Update
+### 4.Parameter Update
 
 •	Once the gradients are computed, the model updates its weights and biases using gradient descent.  
 •	Each parameter is slightly adjusted in a direction that reduces the loss.

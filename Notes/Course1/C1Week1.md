@@ -16,13 +16,13 @@ It consists of three layers:
 2. **RNN (Recurrent Neural Network)** – Designed for processing sequential data (where output depends on previous inputs).
 3. **LSTM (Long Short-Term Memory)** – A type of RNN that can learn long-term dependencies.
 
-# SUPERVISED LEARNING
+## SUPERVISED LEARNING
 
 Supervised learning is a type of machine learning where the model is trained using labeled data. For every input `X`, the correct output `Y` is provided so the model learns to map inputs to outputs — i.e., it learns from example (input, output) pairs for accurate future prediction on unseen data.
 
 ![Supervised Learning](images/SupervisedLearning.png)
 
-# Scale Drives Deep Learning
+## Scale Drives Deep Learning
 
 ![Training Data](images/TrainingData.png)
 
