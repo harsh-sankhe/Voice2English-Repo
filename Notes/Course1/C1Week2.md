@@ -106,7 +106,9 @@ This approach becomes inefficient and slow, especially for large datasets, as it
 ### Vectorizing and Implementing Logistic Regression
 
 ![Vectorized1](images/image-9.png)  
-![Vectorized2](images/image-10.png)  
+
+![Vectorized2](images/image-10.png) 
+ 
 ![Vectorized3](images/image-11.png)
 
 ---

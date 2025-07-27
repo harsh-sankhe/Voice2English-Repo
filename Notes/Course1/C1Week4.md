@@ -37,7 +37,7 @@ It starts with the input `a[0] = x`, each layer computes a linear transformation
 Backward Propagation is a method used to improve a neural network by updating its parameters (weights and biases) to minimize the cost function.  
 It begins by calculating the error between the predicted output and the actual value. Then it computes the gradient of the cost function w.r.t each parameter. Using these gradients, it updates the weights and biases in the opposite direction of the gradient (using gradient descent) gradually reducing the error and improving the model’s accuracy.
 
-![BPF](images/BPF.png)
+![BPF](images/BPFs.png)
 
 ## Training a Deep Neural Network (Step-by-Step)
 
@@ -59,7 +59,7 @@ Training a deep neural network involves four main steps:
 •	Gradients (partial derivatives) of the loss w.r.t weights and biases are computed using the chain rule.  
 •	These gradients flow back from output to input through the network to evaluate how each parameter affects the loss.
 
-### 4.Parameter Update
+### 4. Parameter Update
 
 •	Once the gradients are computed, the model updates its weights and biases using gradient descent.  
 •	Each parameter is slightly adjusted in a direction that reduces the loss.
