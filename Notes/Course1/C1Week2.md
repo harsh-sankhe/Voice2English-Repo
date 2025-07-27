@@ -29,5 +29,21 @@ The feature vector in each training examples is put together as columns so they 
 
 ---
 
+# Logistic Regression
+ It is a statistical method used for binary classification, which predicts one of two possible outcomes for a given input. It is done by modeling the probability that a given input belongs to a particular category.
+
+<img src="Images/LRSigmoidGraph.png" alt="LR1" width="800">
+
+Here:
+- `ŷ` is the probability that the output label `y = 1`, given the input `x`.
+- `x` is the input feature vector.
+- **Sigmoid function** is used to bound the value between 0 to 1.
+- Unlike linear regression, which predicts a continuous output, logistic regression predicts probabilities of the outcome that are bounded between 0 and 1. This is achieved using the logistic function (also known as the sigmoid function).
+  
+<img src="Images/LRSigmoidEq.png" alt="LR2" width="800">
+
+#### Parameters of Logistic Regression
+- Weights (Coefficients): The weights or coefficients w1,w2,...,wnw_1, w_2, ..., w_nw1​,w2​,...,wn​ determine the influence of each feature on the prediction. These are learned from the data during the training process.
+- Bias (Intercept): The bias term bbb is a constant that allows the decision boundary to be adjusted without depending on the input features.
 
 
