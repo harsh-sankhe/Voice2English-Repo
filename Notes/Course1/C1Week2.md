@@ -48,6 +48,12 @@ Here:
 
 ### Loss Function
 The loss function used in logistic regression is called Log Loss or Binary Cross-Entropy Loss
+A **loss function** measures how well a machine learning model’s prediction matches the actual target for a **single training example**.
+
+It outputs a **scalar value** representing the error.
+
+**Example:**  
+For regression, a common loss function is **Mean Squared Error (MSE):**
 
 For a single training example:
 Loss = −[y∗log(p)+(1−y)∗log(1−p)]
@@ -64,3 +70,13 @@ If y = 0, the first term vanishes and it becomes -log(1 - p) → penalizes high 
 - We need to adjust value of parameters `w` and `b` to minimize cost function `J(w,b)` using techniques like gradient descent.
 
 <img src="Images/LossCostFunc.png" alt="Loss Cost Function" width="800">
+
+---
+
+# Gradient Descent
+It is an optimization algorithm used to minimize a cost function by finding the direction of steepest descent.
+
+<img src="Images/GradientDesc1.png" alt="GD1" width="800">
+
+<img src="Images/GradientDesc2.png" alt="GD2" width="800">
+
