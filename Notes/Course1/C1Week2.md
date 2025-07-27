@@ -46,3 +46,21 @@ Here:
 - Weights (Coefficients): w is a vector assigned to each input feature.
 - Bias (Intercept): b are the parameters for logistic regressions they are adjusted during the learning process to make predictions more accurate.
 
+### Loss Function
+The loss function used in logistic regression is called Log Loss or Binary Cross-Entropy Loss
+
+For a single training example:
+Loss = −[y∗log(p)+(1−y)∗log(1−p)]
+
+Where:
+- y = actual label (0 or 1)
+- p = predicted probability (from sigmoid function)
+If y = 1, the second term vanishes and it becomes -log(p) → penalizes low probability for correct class
+If y = 0, the first term vanishes and it becomes -log(1 - p) → penalizes high probability for the wrong class
+
+### Cost Function
+- To train the parameters `w` and `b` we need a cost function. The cost function is used to determine how much error is presentor how close our output is to predicted output.
+- For the entire training set we require the average of loss function which is the cost function.
+- We need to adjust value of parameters `w` and `b` to minimize cost function `J(w,b)` using techniques like gradient descent.
+
+<img src="Images/LossCostFunc.png" alt="Loss Cost Function" width="800">
