@@ -5,4 +5,4 @@ For example, If the image is cat then(1) and if not a cat then(0) where the valu
 An image is represented in form of 3 RGB 64 Matrices. 
 If input image is 64*64 pixels then we will have 3 corresponding RGB matrices of 64 pixels.
 
-![Image Represent](Voice2English-Repo/Notes/Course1/Images/ImgRepresent.png)
+![Image Represent](Images/ImgRepresent.png)
