@@ -25,6 +25,9 @@ The feature vector in each training examples is put together as columns so they 
 `Y ∈ ℝ¹ × m`: Is a row vector containing all labels.  
 `Y.shape = (1, m)`
 
-![Notation](Images/Notation.png)
+<img src="Images/Notation.png" alt="Notation" width="800">
+
+---
+
 
 
