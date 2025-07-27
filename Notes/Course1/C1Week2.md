@@ -4,5 +4,14 @@ For example, If the image is cat then(1) and if not a cat then(0) where the valu
 # Image Representation
 An image is represented in form of 3 RGB 64 Matrices. 
 If input image is 64*64 pixels then we will have 3 corresponding RGB matrices of 64 pixels.
+The dimension of feature vector x is denoted by nx and is equal to 12288.
 
 ![Image Represent](Images/ImgRepresent.png)
+# Notation for training examples
+They are represented by (x,y) where x is the feature vector of dimesnion nx and y is binary output having values 0 and 1.
+In similar manner m is used to denote the training examples and M can be put togehter to make test sets.
+The feature vector in each training examples is put together as columns so they have m input feature vector from the training sets nd have nx number of rows.
+
+![Notation](Images/Notation.png)
+
+
