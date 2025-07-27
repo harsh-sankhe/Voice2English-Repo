@@ -32,7 +32,7 @@ The feature vector in each training examples is put together as columns so they 
 # Logistic Regression
  It is a statistical method used for binary classification, which predicts one of two possible outcomes for a given input. It is done by modeling the probability that a given input belongs to a particular category.
 
-<img src="Images/LRSigmoidGraph.png" alt="LR1" width="800" height="800" >
+<img src="Images/LRSigmoidGraph.png" alt="LR1" width="500" height="auto">
 
 Here:
 - `ŷ` is the probability that the output label `y = 1`, given the input `x`.
