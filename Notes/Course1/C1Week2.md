@@ -9,7 +9,7 @@ An image is represented in form of 3 RGB 64 Matrices.
 If input image is 64*64 pixels then we will have 3 corresponding RGB matrices of 64 pixels.
 The dimension of feature vector x is denoted by nx and is equal to 12288.
 
-![Image Represent](Images/ImgRepresent.png)
+<img src="Images/ImgRepresent.png" alt="Image Represent" width="100">
 
 ---
 
