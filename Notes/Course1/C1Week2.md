@@ -1,5 +1,19 @@
 # Binary Classification
-In a binary classification problem the result is a discrete value output.
+Binary classification is a type of task where a model (like a neural network) learns to classify data into one of two categories.
+
+How it works in a neural network:
+You give it an input (like an image or some data) 
+
+It runs through the neural network
+
+The output is usually a single number between 0 and 1
+
+Closer to 0 → class 0
+
+Closer to 1 → class 1
+
+We usually use an activation function called sigmoid at the end to squash the output between 0 and 1.
+
 For example, If the image is cat then(1) and if not a cat then(0) where the value of y is used to denote the output label of either 1 or 0.
 
 ---
@@ -7,7 +21,7 @@ For example, If the image is cat then(1) and if not a cat then(0) where the valu
 # Image Representation
 An image is represented in form of 3 RGB 64 Matrices. 
 If input image is 64*64 pixels then we will have 3 corresponding RGB matrices of 64 pixels.
-The dimension of feature vector x is denoted by nx and is equal to 12288.
+The dimension of feature vector(list of numbers that represent important characterstics of input Example pixels) x is denoted by nx and is equal to 12288 whereas the label y has dimesnion 1 as it has only two options either 0 or 1. Hence, ny is equal to 1.
 
 <img src="Images/ImgRepresent.png" alt="Image Represent" width="800">
 
@@ -30,7 +44,7 @@ The feature vector in each training examples is put together as columns so they 
 ---
 
 # Logistic Regression
- It is a statistical method used for binary classification, which predicts one of two possible outcomes for a given input. It is done by modeling the probability that a given input belongs to a particular category.
+Logistic Regression is a classification algorithm used to predict binary outcomes (like 0 or 1) by applying a sigmoid function to a linear equation.
 
 <img src="Images/LRSigmoidGraph.png" alt="LR1" width="500" height="auto">
 
@@ -61,11 +75,13 @@ Loss = −[y∗log(p)+(1−y)∗log(1−p)]
 Where:
 - y = actual label (0 or 1)
 - p = predicted probability (from sigmoid function)
-If y = 1, the second term vanishes and it becomes -log(p) → penalizes low probability for correct class
-If y = 0, the first term vanishes and it becomes -log(1 - p) → penalizes high probability for the wrong class
+- If y = 1, the second term vanishes and it becomes -log(p) → penalizes low probability for correct class
+- If y = 0, the first term vanishes and it becomes -log(1 - p) → penalizes high probability for the wrong class
+- If y = 1 and ŷ = 0.9 → Loss is small 
+- If y = 1 and ŷ = 0.1 → Loss is big
 
 ### Cost Function
-- To train the parameters `w` and `b` we need a cost function. The cost function is used to determine how much error is presentor how close our output is to predicted output.
+- To train the parameters `w` and `b` we need a cost function. The cost function is used to determine how much error is present or how close our output is to predicted output.
 - For the entire training set we require the average of loss function which is the cost function.
 - We need to adjust value of parameters `w` and `b` to minimize cost function `J(w,b)` using techniques like gradient descent.
 
@@ -80,3 +96,7 @@ It is an optimization algorithm used to minimize a cost function by finding the 
 
 <img src="Images/GradientDesc2.png" alt="GD2" width="800">
 
+### Derivatives
+Derivative is nothing but slope of a function which gives us height/width. It remains constant for all value.
+
+<img src="Images/DerivativeIntuation.png" alt="Derivative" width="800"> 

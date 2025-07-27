@@ -17,7 +17,7 @@ For example: Images, audio files, and text documents are unstructured and need m
 
 ## Why is Deep Learning taking off ?
 1. More Data
-2. Better Hardware (GPUs)
+2. Better Hardware (GPUs) -> Graphic processing unit is a special type of computer chip designed to handle lots of small calculation at same time.
 3. Scalability
 4. Open Source Tools (TensorFlow, PyTorch)
 
