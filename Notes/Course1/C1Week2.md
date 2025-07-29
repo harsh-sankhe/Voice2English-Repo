@@ -135,7 +135,33 @@ We want to train a logistic regression model on all of them using vectorized mat
 ---
 
 # Vectorization
+- The main idea behind vectorization is to avoid using explicit for loops when working with data in neural networks.
+- Instead of processing one training example at a time, we work with entire arrays (vectors/matrices) at once.
+- This makes the implementation faster and more efficient, especially with large datasets.
+- Libraries like NumPy, TensorFlow, and PyTorch are optimized to perform these vectorized operations very quickly.
+- In a vectorized implementation, we directly compute dot products and other operations using matrix algebra, without looping manually.
 
+<img src="Images/WhatVectoriaztion.png" alt="What is Vectorization" width="800">
 
+### Vectorizing Logistic Regression
+Perform logistic regression over `m` training examples without using loops.
 
+<img src="Images/VectorizingLR" alt="VectorizingLR" width="800">
+
+### Implementation of Logistic Regression
+
+<img src="Images/ImplementLR.png" alt="Implementing Logistic Regression" width="800">
+
+---
+
+# Broadcasting
+Broadcasting is a technique used in NumPy to perform operations on arrays of different shapes — without explicitly copying or looping.
+
+<img src="Images/Broadcasting.png" alt="Broadcasting" width="800">
+
+### General Principle of Broadcasting
+
+<img src="Images/GeneralBroadcasting.png" alt="GPBroad" width="800">
+
+---
 
