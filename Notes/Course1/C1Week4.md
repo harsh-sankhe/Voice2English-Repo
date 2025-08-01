@@ -12,13 +12,25 @@ The input feature vector size is n[0]
 
 Each layer l has n[l] neurons
 
-Symbol	 Description	                    Shape (Dimensions)
-W[l]	 Weights matrix for layer l         (n[l], n[l-1])
-b[l]	 Bias vector for layer l	        (n[l], 1)
-Z[l]	 Linear output of layer l	        (n[l], m)
-A[l]	 Activation/output of layer l	    (n[l], m)
- X	     Input data	                        (n[0], m)
- Y	     True labels	                    (1, m) for binary classification
+### Layer-wise Symbols and Dimensions
+
+| Symbol | Description                          | Shape (Dimensions)          |
+|--------|--------------------------------------|-----------------------------|
+| `W[l]` | Weights matrix for layer `l`         | `(n[l], n[l-1])`            |
+| `b[l]` | Bias vector for layer `l`            | `(n[l], 1)`                 |
+| `Z[l]` | Linear output (before activation)    | `(n[l], m)`                 |
+| `A[l]` | Activation/output of layer `l`       | `(n[l], m)`                 |
+| `X`    | Input data                           | `(n[0], m)`                 |
+| `Y`    | True labels (binary classification)  | `(1, m)`                    |
+
+### Notes:
+
+- `n[l]` = number of neurons in layer `l`.
+- `m` = number of training examples.
+- The input layer is considered layer `0`, so `n[0]` is the number of input features.
+- Activations (`A[l]`) for each layer are computed using:
+  - `Z[l] = W[l] * A[l-1] + b[l]`
+  - `A[l] = activation(Z[l])`
 
 <img src="Images/ParametersWandB.png" width="800">
 
@@ -93,8 +105,5 @@ When working with neural networks, it’s important to understand the difference
   - **Activation Functions (e.g., ReLU, Sigmoid)**
   - **Regularization Parameters (like λ)**
 
-
-
-
-
+---
 
