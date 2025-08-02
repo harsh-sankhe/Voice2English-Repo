@@ -60,6 +60,93 @@ To make this efficient, we vectorize the computations across all examples instea
 
 # Activation Functions
 
+- Activation functions introduce **non-linearity**, enabling neural networks to learn complex patterns.
+- They decide whether a neuron should be activated or not by applying a nonlinear transformation to the input.
+  
+## Why Are Activation Functions Needed?
+
+1. **Introduce Non-Linearity**  -  Without activation functions a neural network behaves like a linear model and cannot learn complex data representations.
+
+2. **Enable Learning of Complex Patterns**  -  They allow the network to capture complex patterns and relationships in the data.
+
+3. **Facilitate Meaningful Layer Interactions**  -  Activation functions ensure each layer performs a transformation on the data. Without them, the network would collapse into a single linear transformation
+
+## Different Types of Activation Functions
+
+### 1. Sigmoid
+- Formula: 𝜎(𝑧) = 1 / (1 + 𝑒^(-z))
+- Range: 0 to 1
+- Derivative: g(z) * (1 - g(z))
+- Commonly used: In the output layer for Binary Classification.
+- Cause gradients to vanish when z is very large or very small.
+
+### 2. Tanh (Hyperbolic Tangent)
+- Formula: tanh(z) = (e^z - e^−z) / (e^z + e^−z)
+- Range: -1 to 1
+- Derivative: 1 - g(z)^2
+- Commonly used in hidden layers because it's zero-centered, which helps learning.
+
+### 3. ReLU (Rectified Linear Unit)
+- It is a popular activation function.
+- Defined as ReLU(x) = max(0, x)
+- Derivative is 1 for x > 0 and 0 for x < 0. Derivative at x = 0 is not well-defined (we either assume it to be 1 or 0)
+- Commonly used in hidden layers due to its efficiency and effectiveness.
+
+### 4. Leaky ReLU
+- An alternative to ReLU where the function allows a small gradient for negative inputs.
+- Leaky ReLU(x) = max(0.01x, x)
+- The slope is a small constant (0.01) when x < 0.
+
+### 5. Softmax
+- Used for multi-class classification problems.
+- Defined as Softmax(x_i) = e^(x_i) / ∑(e^(x_j)) for all j
+- Recommended for the output layer in multi-class classification tasks.
+
+![alt text](images/activation.png)
+
+# Gradient Descent for Neural Networks
+
+**Step 1 : Initialization**  
+We start with random initialization for weights and biases  
+`W1` and `B1` for the hidden layer, whereas `W2` and `B2` for the output layer.
+
+**Step 2 : Forward Propagation**  
+Pass input data through the network to get predictions and calculate intermediate values and apply activation functions.
+
+**Calculate Activations:**
+
+**Hidden Layer:**  
+`Z1 = W1 * X + B1`  
+`A1 = Activation(Z1)`
+
+**Output Layer:**  
+`Z2 = W2 * A1 + B2`  
+`A2 = Sigmoid(Z2)`
+
+**Step 3 : Back Propagation and Computing Gradients**  
+Determining how much each weight and bias affects the prediction error and calculate gradient using chain rule.
+
+
+**Step 4 : Update Weights**  
+Adjusting the values of `W1`, `B1`, `W2`, and `B2` using the computed gradients.  
+Use a learning rate (hyperparameter) to control the size of the adjustments.
+
+**Output Layer:**  
+`DZ2 = A2 - Y`  
+`DW2 = DZ2 * A1^T`  
+`DB2 = DZ2`
+
+**Hidden Layer:**  
+`DZ1 = (W2^T * DZ2) * Activation'(Z1)` (Error propagated back)  
+`DW1 = DZ1 * X^T` (Gradient for weights)  
+`DB1 = DZ1` (Gradient for biases)
+
+**Step 5 : Training which involves iteration**  
+Repeat forward propagation and back propagation.  
+Update weights and biases each iteration to improve network performance.
+
+![alt text](images/gradient.png)
+
 
 # Random Initialization
 
