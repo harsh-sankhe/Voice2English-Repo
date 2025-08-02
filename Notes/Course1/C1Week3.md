@@ -59,3 +59,17 @@ To make this efficient, we vectorize the computations across all examples instea
 ---
 
 # Activation Functions
+
+
+# Random Initialization
+
+•   Random weight initialization is essential as it helps to break symmetry between neurons. 
+•   This ensures that neurons can learn different patterns; otherwise, they behave identically and end up learning the same thing.
+
+It is safe and common to initialize all biases to zero.
+
+Choosing the right scale for random weights is important:
+- **Too small** → leads to slow learning (vanishing gradients).
+- **Too large** → leads to unstable learning (exploding gradients).
+
+**Proper initialization results in faster and more stable training.**
