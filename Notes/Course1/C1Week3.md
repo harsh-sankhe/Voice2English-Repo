@@ -47,8 +47,15 @@ For a two-layer neural network (1 hidden layer + 1 output layer), forward propag
 
 In a neural network, the output computation can be seen as **iterative applications of logistic regression** at each layer, including the output layer.
 
+---
+
 # Vectorizing Across Multiple Examples
 
+We majorly train our neural networks on multiple training examples at once (batch processing). 
+To make this efficient, we vectorize the computations across all examples instead of processing one example at a time and using the loop structure
+
 ![Vectorization Across Examples](images/vectorizing.png)
+
+---
 
 # Activation Functions
