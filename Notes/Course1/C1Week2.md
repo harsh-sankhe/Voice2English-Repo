@@ -143,6 +143,8 @@ We want to train a logistic regression model on all of them using vectorized mat
 
 <img src="Images/WhatVectoriaztion.png" alt="What is Vectorization" width="800">
 
+<img src="Images/MoreVectorizedExample.png" width="800">
+
 ### Vectorizing Logistic Regression
 Perform logistic regression over `m` training examples without using loops.
 
