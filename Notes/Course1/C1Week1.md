@@ -7,6 +7,13 @@ A neural network is a type of machine learning model inspired by the structure o
 2. Hidden Layer: These layers do the actual computation it is present between the input and the output layers. There can be multiple hidden layers.
 3. Output Layer: The layer which gives us the final output.
 ## Supervised Learning with Neural Networks
+Supervised learning is a type of machine learning where the model learns from labeled data — meaning, the input comes with the correct answer.
+
+Think of it like teaching a child with flashcards:
+
+You show a picture of a cat (input) and say “This is a cat” (label).
+
+Do this enough times, and the child (or model) starts recognizing cats on its own!
 - Structured Data: Data that is organized in a tabular format with defined features.Each column has clear meaning and can be directly used for prediction tasks.
 
 For example, in the house price prediction we can use features like number of bedrooms, size, zip code etc.
