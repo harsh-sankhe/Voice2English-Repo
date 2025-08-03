@@ -227,13 +227,13 @@ This method is called the **two-sided difference** and is generally more accurat
 # Gradient Checking:
 - Gradient checking helps ensure that the gradients computed by your backpropagation implementation are correct. It does this by comparing them to numerically approximated gradients.
 - Reshape and concatenate:
- - The first step involves reshaping the parameters i.e the weights (W) and biases (B). We convert these to vectors and then concatenate these into a big vector 'θ'.
- - We perform the same operation on the dervatives of W and B and store them in a vector dθ.
- - Cost Function: So instead of the cost function J being a function of the weights and biases it will be a function of θ.
+  - The first step involves reshaping the parameters i.e the weights (W) and biases (B). We convert these to vectors and then concatenate these into a big vector 'θ'.
+  - We perform the same operation on the dervatives of W and B and store them in a vector dθ.
+  - Cost Function: So instead of the cost function J being a function of the weights and biases it will be a function of θ.
 - Approximating the derivatives:
- - We want to check if the derivatives of J with respect to theta (dθ) are correct. To do this,we implement loop and then we compute an approximation of dθ for each component of θ using a two-sided difference as defined above.
+  - We want to check if the derivatives of J with respect to theta (dθ) are correct. To do this,we implement loop and then we compute an approximation of dθ for each component of θ using a two-sided difference as defined above.
 - Comparing the vectors:
- - We compare the computed dθ approx with the actual derivative dθ. If they are approximately equal, it means our derivative approximation is likely correct.
+  - We compare the computed dθ approx with the actual derivative dθ. If they are approximately equal, it means our derivative approximation is likely correct.
 
 <img src="Images/GradientChecking.png" width="800">
 
