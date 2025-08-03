@@ -139,5 +139,112 @@ Dropout is a popular regularization technique to prevent **overfitting** in deep
 - Prevents overfitting by stopping training before the model starts to memorize the training data.This ensures that it generalizes well to new, unseen data.
 - Integrates the cost function with regularization, making the training process more complex.
 
+---
+
+# Normalizing Inputs
+
+Input normalization is the process of scaling the input features so that they have:
+
+- **Zero mean (centered around 0)**
+- **Unit variance (standard deviation = 1)**
+
+## Formula
+For each feature \( x \): x_normalized = (x - μ) / σ
+
+Where:
+
+- \( μ \) = Mean of the feature (average value)
+- \( σ \) = Standard deviation of the feature
+
+<img src="Images/NormalizeTrainingSets.png" width="800">
+
+## Why Normalize Inputs?
+
+- **Faster Convergence:** Helps gradient descent reach the minimum quicker.
+- **Stable Learning:** Prevents weights from getting stuck due to large or uneven feature values.
+- **Better Performance:** Models train more efficiently and generalize better.
+
+<img src="Images/WhyNormalizeInput.png" width="800">
+
+---
+
+# Vanishing/ Exploding Gradients
+
+- The general idea is that when we are training very deep neural networks sometimes the dervatiives (slopes) can get very big or very small. This makes training the network difficult.
+- When the weight matrix 'W' for each layer is initialized to be slightly larger than the identity matrix, the output of the network grows exponentially with the number of layers. This is known as the problem of exploding gradients.If gradients are very large, they can cause numerical instability and make it difficult for the network to to learn and make gradient descent very slow.
+- When the weight matrix 'W' for each layer is initialized to be slightly smaller than the identity matrix, the output of the network decreases exponentially with the number of layers. This is known as the problem of vanishing gradients.This means activations and gradients decrease exponentially, making it hard for the network to learn.
+
+To deal with this it is important to be careful when initializing weights in each layer.
+
+<img src="Images/Vanish:ExplodeGradients.png" width="800">
+
+# Weight Initalization
+
+In very deep neural networks, gradients can sometimes:
+- Become extremely small (vanishing gradients)
+- Or grow excessively large (exploding gradients)
+
+### Smart Weight Initialization
+
+Instead of initializing weights randomly without rules, we use specific strategies that help control the scale of the outputs and gradients.
+
+### Gaussian Initialization with Scaled Variance
+
+- Initialize weights using a **Gaussian (normal) distribution**.
+- But scale the variance depending on the number of inputs (n) to each neuron.
+
+### Common Strategies:
+
+- If we have a neuron with 4 input features, we can set the variance of the weights to be 1/4
+- With the tanh activation function, it has been found that setting the variance of the weights to 1/n
+- If we're using a ReLU activation function, it's even better to set the variance to be 2/n, where n is the number of input features.
+
+<img src="Images/WeightInitalization.png" width="800">
+
+# Numerical Approximation of Gradients
+
+Gradient checking is an important technique used to verify the correctness of your backpropagation implementation in neural networks. This is done by estimating the gradient numerically and comparing it to the one calculated using backpropagation.
+
+<img src="Images/NumericalApproxGradients.png" width="800">
+
+## Two-Sided Difference Method
+
+To numerically estimate the gradient of a function `f` with respect to a parameter `θ`, we use the following formula: `g(θ) ≈ [f(θ + ε) - f(θ - ε)] / (2 * ε)`
+
+Where:
+- `θ` is the parameter (like a weight or bias).
+- `ε` is a small constant (e.g., `1e-7`).
+- `f(θ)` is the cost function evaluated at that parameter.
+
+This method is called the **two-sided difference** and is generally more accurate than the one-sided version.
+
+## Why Two-Sided is Preferred
+
+- **Higher Accuracy:** The error in the two-sided difference method decreases with `ε²`, while in the one-sided difference, it decreases with `ε`.
+- **Balanced Estimation:** It looks at changes on both sides of the parameter, which gives a better approximation of the slope.
+- **Minimizes Rounding Errors:** Especially important when `ε` is very small.
+
+# Gradient Checking:
+- Gradient checking helps ensure that the gradients computed by your backpropagation implementation are correct. It does this by comparing them to numerically approximated gradients.
+- Reshape and concatenate:
+ - The first step involves reshaping the parameters i.e the weights (W) and biases (B). We convert these to vectors and then concatenate these into a big vector 'θ'.
+ - We perform the same operation on the dervatives of W and B and store them in a vector dθ.
+ - Cost Function: So instead of the cost function J being a function of the weights and biases it will be a function of θ.
+- Approximating the derivatives:
+ - We want to check if the derivatives of J with respect to theta (dθ) are correct. To do this,we implement loop and then we compute an approximation of dθ for each component of θ using a two-sided difference as defined above.
+- Comparing the vectors:
+ - We compare the computed dθ approx with the actual derivative dθ. If they are approximately equal, it means our derivative approximation is likely correct.
+
+<img src="Images/GradientChecking.png" width="800">
+
+## Gradient Checking – Implementation Notes
+
+- Use only for debugging, not during actual training.
+- If gradient check fails, inspect each layer/component individually.
+- Include regularization terms in both cost and gradient calculations.
+- Do not use with dropout – it introduces randomness and breaks consistency.
+- Run at random initialization, and optionally after some training steps.
+
+
 
 
