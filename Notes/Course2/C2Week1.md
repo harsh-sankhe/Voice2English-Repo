@@ -38,6 +38,8 @@
 | Overfitting       | Low       | High     | Good on train, poor on dev |
 | Just Right        | Low       | Low      | Good on train & dev        |
 
+<img src="Images/BasicRecipeML.png" width="800">
+
 ---
 
 
