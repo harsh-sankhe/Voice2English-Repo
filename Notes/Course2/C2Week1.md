@@ -14,18 +14,18 @@
 
 ---
 
-## Bias and Variance
+#### Bias and Variance
 
 - **Variance**: Measures how much the model’s predictions change when trained on different subsets of the data.
 - **Bias**: Refers to the error introduced when a model makes strong assumptions and oversimplifies the data.
 
 ---
-## Train Set and Dev Set Error
+#### Train Set and Dev Set Error
 
 - **Train Set Error**: The error measured on the data that the model was trained on. It tells us how well the model has learned the training data. 
 - **Dev Set Error**: The error measured on a development set not seen during training. It helps to evaluate the model's ability to generalize to unseen data.  
 
-### Error Diagnosis Table
+#### Error Diagnosis Table
 
 | Training Error | Dev Set Error | Diagnosis                        | Train Set Error % | Dev Set Error % |
 |----------------|----------------|----------------------------------|--------------------|------------------|
@@ -36,19 +36,19 @@
 
 ---
 
-### Bias-Variance Trade-off
+#### Bias-Variance Trade-off
 
 It is a balance between a **simple model** (high bias, low variance) and a **complex model** (low bias, high variance) to achieve the best performance on **unseen new data**.
 
 ---
 
-## Solutions
+### Solutions
 
-### High Bias (Underfitting)
+#### High Bias (Underfitting)
 - Increasing the model complexity by adding more layers or units
 - Training model for more epochs/iteration
 
-### High Variance (Overfitting)
+####  High Variance (Overfitting)
 - Collect more training data
 - Using regularization (L2, dropout)
 
