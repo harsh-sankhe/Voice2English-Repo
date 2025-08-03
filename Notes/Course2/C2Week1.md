@@ -91,3 +91,36 @@ Common techniques include: **Horizontal flipping**,**Random rotations**,**Random
 Early stopping monitors the model's performance on a dev set during training. If the error starts increasing indicating overfitting, training is stopped early. This prevents the model from **memorizing** the training data ans saves training time and **improves generalization** to unseen data.
 
 - Both of these techniques are simple yet powerful tools for building more robust neural networks, especially when data is limited.
+
+## Normalization
+
+Normalization ensures that all input features are on a similar scale, which significantly speeds up the training process and improves convergence.THis process is also called as feature scaling.
+
+#### Steps in Normalization:
+
+![alt text](images/image4.png)
+
+1. **Mean Subtraction**:  
+   Subtract the **mean** \( \mu \) from each feature in the training set. This centers the data around zero (zero mean).
+
+2. **Variance Scaling**:  
+   Compute the **standard deviation** \( \sigma \) of each feature, then divide each feature by \( \sigma^2 \). This results in unit variance.
+
+>  The same \( \mu \) and \( \sigma^2 \) from the training set must be used to normalize the dev and test sets.
+
+---
+#### Why Normalize?
+
+- Without normalization:
+  - Input features may be on very different scales.
+  - This leads to an **elongated cost function**, which slows down and complicates gradient descent.
+
+- With normalization:
+  - Features are scaled similarly.
+  - The **cost function becomes more symmetric and spherical**, helping gradient descent converge **faster and more reliably**.
+
+  ![alt text](images/image3.png)
+
+> Normalization is especially important when using gradient-based optimization algorithms.
+
+---
