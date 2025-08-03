@@ -64,9 +64,9 @@ It is a balance between a **simple model** (high bias, low variance) and a **com
 
 ## Regularization
 
-Regularization is a technique used in machine learning to prevent overfitting by adding a penalty to the loss function.  
-It is used to reduce overfitting (high variance), especially when getting more training data is difficult or expensive.  
-It penalizes large weight parameters, and the penalty strength is controlled by the regularization parameter **λ**.
+- Regularization is a technique used in machine learning to prevent overfitting by adding a penalty to the loss function.  
+- It is used to reduce overfitting (high variance), especially when getting more training data is difficult or expensive.  
+- It penalizes large weight parameters, and the penalty strength is controlled by the regularization parameter **λ**.
 
 ### L2 Regularization (Weight Decay)
 - Adds **(λ / 2m) * ||w||²** to the cost function.
@@ -82,15 +82,14 @@ It penalizes large weight parameters, and the penalty strength is controlled by 
 
 ## Regularization on Logistic Regression
 
-In Logistic Regression we aim to minimize a cost function J(w, b).  
-To prevent overfitting, regularization is added to this cost function.
+- In Logistic Regression we aim to minimize a cost function J(w, b).  
+- To prevent overfitting, regularization is added to this cost function.
 
-### Regularized Cost Function:
-**J(w, b) = Original Loss + (λ / 2m) * ∥w∥²**
+##### Regularized Cost Function: **J(w, b) = Original Loss + (λ / 2m) * ∥w∥²**
 
 - λ is the regularization parameter.
 - ∥w∥² is the L2 norm, i.e., the sum of the squares of the weights.
-Adding regularization encourages simpler models that generalize better and it helps prevent overfitting by discouraging the model from "memorizing" the training data.
+- Adding regularization encourages simpler models that generalize better and it helps prevent overfitting by discouraging the model from "memorizing" the training data.
 
 ![alt text](images/image.png)
 
@@ -98,11 +97,10 @@ Adding regularization encourages simpler models that generalize better and it he
 
 ## Regularization in Neural Network
 
-In Neural Networks, regularization is used to reduce overfitting and improve the model's generalization to unseen data.  
-It works by adding a penalty to the cost function to discourage large weight values.
+- In Neural Networks, regularization is used to reduce overfitting and improve the model's generalization to unseen data.  
+- It works by adding a penalty to the cost function to discourage large weight values.
 
-### Regularized Cost Function:
-**J(w, b) = Original Loss + (λ / 2m) * ∑ ∥w[l]∥²**
+##### Regularized Cost Function: **J(w, b) = Original Loss + (λ / 2m) * ∑ ∥w[l]∥²**
 
 - The summation ∑ ∥w[l]∥² is taken over all layers **l** in the neural network.
 - λ is the regularization parameter that controls the strength of the penalty.
