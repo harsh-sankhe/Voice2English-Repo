@@ -24,7 +24,7 @@
 - **Train Set Error**: The error measured on the data that the model was trained on. It tells us how well the model has learned the training data. 
 - **Dev Set Error**: The error measured on a development set not seen during training. It helps to evaluate the model's ability to generalize to unseen data.  
 
-### Underfitting and Overfitting
+#### Underfitting and Overfitting
 
 - **Underfitting** = Poor performance on training and test sets.
 - **Overfitting** = Good training performance i.e. it starts to memorize the training data but poor generalization.
