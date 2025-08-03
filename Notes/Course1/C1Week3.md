@@ -145,7 +145,7 @@ Use a learning rate (hyperparameter) to control the size of the adjustments.
 Repeat forward propagation and back propagation.  
 Update weights and biases each iteration to improve network performance.
 
-![alt text](images/gradient.png)
+![alt text](images/gradient.png) 
 
 
 # Random Initialization
