@@ -52,3 +52,42 @@ It is a balance between a **simple model** (high bias, low variance) and a **com
 - Collect more training data
 - Using regularization (L2, dropout)
 
+## Regularization
+
+Regularization is a technique used in machine learning to prevent overfitting by adding a penalty to the loss function.  
+It is used to reduce overfitting (high variance), especially when getting more training data is difficult or expensive.  
+It penalizes large weight parameters, and the penalty strength is controlled by the regularization parameter **λ**.
+
+### L2 Regularization (Weight Decay)
+- Adds **(λ / 2m) * ||w||²** to the cost function.
+- Called "Weight Decay" because weights shrink slightly at each training step.
+- Encourages smaller weights.
+- Commonly used in neural networks.
+
+### L1 Regularization
+- Adds **(λ / m) * Σ |w[j]|** to the cost function.
+- Less common in deep learning compared to L2.
+
+## Regularization on Logistic Regression
+
+![alt text](images/image.png)
+
+## Regularization in Neural Network
+
+![alt text](images/image2.png)
+
+## Other Regularization Methods
+
+### Data Augmentation
+
+Data augmentation artificially increases the size of the training dataset by applying transformations to existing data. This helps the model generalize better by exposing it to varied forms of the same input.
+
+Common techniques include: **Horizontal flipping**,**Random rotations**,**Random cropping** etc.
+
+> These techniques help reduce overfitting by creating new "fake" examples from existing data, without requiring new independent data.
+
+### Early Stopping
+
+Early stopping monitors the model's performance on a dev set during training. If the error starts increasing indicating overfitting, training is stopped early. This prevents the model from **memorizing** the training data ans saves training time and **improves generalization** to unseen data.
+
+- Both of these techniques are simple yet powerful tools for building more robust neural networks, especially when data is limited.
