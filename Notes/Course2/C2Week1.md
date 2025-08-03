@@ -14,16 +14,24 @@
 
 ---
 
-#### Bias and Variance
+### Bias and Variance
 
-- **Variance**: Measures how much the model’s predictions change when trained on different subsets of the data.
-- **Bias**: Refers to the error introduced when a model makes strong assumptions and oversimplifies the data.
+- **Variance**: refers to how well our algorithm generalizes to new, unseen data.
+- **Bias**: Refers to the error and to how well our algorithm fits the training data.
 
----
 #### Train Set and Dev Set Error
 
 - **Train Set Error**: The error measured on the data that the model was trained on. It tells us how well the model has learned the training data. 
 - **Dev Set Error**: The error measured on a development set not seen during training. It helps to evaluate the model's ability to generalize to unseen data.  
+
+### Underfitting and Overfitting
+
+- **Underfitting** = Poor performance on training and test sets.
+- **Overfitting** = Good training performance i.e. it starts to memorize the training data but poor generalization.
+
+![alt text](images/image5.png)
+
+---
 
 #### Error Diagnosis Table
 
@@ -52,6 +60,8 @@ It is a balance between a **simple model** (high bias, low variance) and a **com
 - Collect more training data
 - Using regularization (L2, dropout)
 
+---
+
 ## Regularization
 
 Regularization is a technique used in machine learning to prevent overfitting by adding a penalty to the loss function.  
@@ -68,13 +78,42 @@ It penalizes large weight parameters, and the penalty strength is controlled by 
 - Adds **(λ / m) * Σ |w[j]|** to the cost function.
 - Less common in deep learning compared to L2.
 
+--- 
+
 ## Regularization on Logistic Regression
+
+In Logistic Regression we aim to minimize a cost function J(w, b).  
+To prevent overfitting, regularization is added to this cost function.
+
+### Regularized Cost Function:
+**J(w, b) = Original Loss + (λ / 2m) * ∥w∥²**
+
+- λ is the regularization parameter.
+- ∥w∥² is the L2 norm, i.e., the sum of the squares of the weights.
+Adding regularization encourages simpler models that generalize better and it helps prevent overfitting by discouraging the model from "memorizing" the training data.
 
 ![alt text](images/image.png)
 
+---
+
 ## Regularization in Neural Network
 
+In Neural Networks, regularization is used to reduce overfitting and improve the model's generalization to unseen data.  
+It works by adding a penalty to the cost function to discourage large weight values.
+
+### Regularized Cost Function:
+**J(w, b) = Original Loss + (λ / 2m) * ∑ ∥w[l]∥²**
+
+- The summation ∑ ∥w[l]∥² is taken over all layers **l** in the neural network.
+- λ is the regularization parameter that controls the strength of the penalty.
+- m is the number of training examples.
+- Encourages smaller weights across layers to prevent the network from fitting the noise in training data.
+
+By applying regularization, neural networks learn smoother functions, reduce complexity, and perform better on test data.
+
 ![alt text](images/image2.png)
+
+---
 
 ## Other Regularization Methods
 
@@ -92,6 +131,8 @@ Early stopping monitors the model's performance on a dev set during training. If
 
 - Both of these techniques are simple yet powerful tools for building more robust neural networks, especially when data is limited.
 
+---
+
 ## Normalization
 
 Normalization ensures that all input features are on a similar scale, which significantly speeds up the training process and improves convergence.THis process is also called as feature scaling.
@@ -101,14 +142,13 @@ Normalization ensures that all input features are on a similar scale, which sign
 ![alt text](images/image4.png)
 
 1. **Mean Subtraction**:  
-   Subtract the **mean** \( \mu \) from each feature in the training set. This centers the data around zero (zero mean).
+   Subtract the **mean** μ from each feature in the training set. This centers the data around zero (zero mean).
 
 2. **Variance Scaling**:  
-   Compute the **standard deviation** \( \sigma \) of each feature, then divide each feature by \( \sigma^2 \). This results in unit variance.
+   Compute the **standard deviation** σ^2  of each feature, then divide each feature by σ^2 . This results in unit variance.
 
->  The same \( \mu \) and \( \sigma^2 \) from the training set must be used to normalize the dev and test sets.
+-  The same  μ  and σ^2  from the training set must be used to normalize the dev and test sets.
 
----
 #### Why Normalize?
 
 - Without normalization:
@@ -121,6 +161,9 @@ Normalization ensures that all input features are on a similar scale, which sign
 
   ![alt text](images/image3.png)
 
-> Normalization is especially important when using gradient-based optimization algorithms.
+-  Normalization is especially important when using gradient-based optimization algorithms.
 
 ---
+
+## Vanishing/ Exploding Gradient
+
