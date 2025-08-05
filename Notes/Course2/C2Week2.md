@@ -28,6 +28,38 @@
 
 ---
 
+# Exponentially Weighted Averages
+- It is an optimazation method to smooth out noisy data or track rends over time.
+- It gives more weight to recent values and less to older ones.
+
+v<sub>t</sub> = β<sub>v(t−1)</sub>​ + (1−β)θ<sub>t</sub>
+​
+Where:
+
+- v<sub>t</sub> = Current Average
+- β = Smoothing Factor (usually close to 1 like 0.9 or 0.99)
+- θ<sub>t</sub> = Current Data Point
+- v<sub>t-1</sub> = Previous Average
+
+- High β (e.g., 0.98): Smoother, slower response, less noise.
+- Moderate β (e.g., 0.9): Balanced smoothness and responsiveness.
+- Low β (e.g., 0.5): Faster response, noisier.
+
+<img src="Images/ExponentiallyWeightedAvg.png" width="800">
+
+<img src="Images/ExpoWeightAvgImplement.png.png" width="800">
+
+## Bias Correction
+- Bias correction is a technique used to improve the accuracy of exponentially weighted averages, especially during the initial phase when the estimate may be skewed or less accurate.
+- When you first initialize the exponentially weighted average with zero, the early estimates can be biased low. Bias correction helps adjust these early estimates to be more accurate.
+- To correct this bias, you divide the moving average by a correction factor 1 - β^t.
+- Bias Correction Formula: V(t_corrected) = V<sub>t</sub><sup>corrected</sup> = V<sub>t</sub>/(1 - β<pow>t</pow>)
+- During the initial phase of the moving average, bias correction significantly improves the accuracy of the estimates.
+- As t becomes large, the term β^t approaches zero, so the bias correction has less impact.
+
+<img src="Images/BiasCorrection.png" width="800">
+
+
 
 
 
