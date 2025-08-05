@@ -81,10 +81,40 @@ Let:
 <img src="Images/GDImplement.png" width="800">
 
 # RMSprop : Root Mean Square Propogation
+- RMSprop is an adaptive learning rate optimization algorithm that improves convergence by controlling oscillations during training.
+- In standard Gradient Descent, the same learning rate is applied to all parameters.
+- This can cause instability when the gradients vary in scale, especially in directions with steep curvature (vertical oscillations).
+- RMSprop adapts the learning rate for each parameter, helping the algorithm stabilize and converge faster.
 
+<img src="Images/RMSProp.png" width="800">
 
+# Adam Optimizer (Adaptive Moment Estimation)
+- Adam is a powerful optimization algorithm that combines the benefits of both **Momentum** and **RMSprop** to provide fast and efficient convergence in deep learning models.
+- Momentum helps keep your training moving in the right direction by remembering the direction of your previous steps. This helps smooth out the path and prevents getting stuck.
+- RMSprop adjusts your step size based on the terrain of the loss function. It prevents steps from being too large in steep areas and too small in flat areas.
+- How Adam Works :
+  - Adam initializes two moving averages: one for the gradients and one for the squared gradients. During each iteration:
+  - It updates these moving averages with the current gradients.
+  - It adjusts the parameters using both the moving averages and the original gradients.
+  - This combination allows Adam to adapt the learning rate for each parameter
 
+<img src="Images/AddamOptimization.png" width="800">
 
+<img src="Images/HyperparamterChoice.png" width="800">
+
+## Learning Rate Decay
+- Learning rate decay is a technique that helps speed up training by gradually reducing the learning rate over time.
+- Begin training with a high learning rate to enable the model to learn quickly and explore various solutions. As training progresses, gradually reduce the learning rate.
+- This approach allows the model to make smaller, more refined updates to its parameters. By doing so, the model can fine-tune its learning and is less likely to get trapped in poor solutions.
+α = (1 / (1 + decay_rate * epoch_num)) * 𝛼(0)
+
+<img src="Images/LearningRateDecay.png" width="800">
+
+#### Other learning rate decay
+
+1. `α = constant / sqrt(epoch_num) * α(0)`
+2. `α = α(0) * e^(-decay_rate * epoch_num)`
+3. `α = α(0) * decay_rate^(floor(epoch_num / decay_steps))`
 
 
 
