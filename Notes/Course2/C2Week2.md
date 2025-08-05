@@ -26,8 +26,6 @@
 
 <img src="Images/ChoosingMiniBatchSize.png" width="800">
 
----
-
 # Exponentially Weighted Averages
 - It is an optimazation method to smooth out noisy data or track rends over time.
 - It gives more weight to recent values and less to older ones.
@@ -47,17 +45,45 @@ Where:
 
 <img src="Images/ExponentiallyWeightedAvg.png" width="800">
 
-<img src="Images/ExpoWeightAvgImplement.png.png" width="800">
+<img src="Images/ExpoWeightAvgImplement.png" width="800">
 
 ## Bias Correction
 - Bias correction is a technique used to improve the accuracy of exponentially weighted averages, especially during the initial phase when the estimate may be skewed or less accurate.
 - When you first initialize the exponentially weighted average with zero, the early estimates can be biased low. Bias correction helps adjust these early estimates to be more accurate.
 - To correct this bias, you divide the moving average by a correction factor 1 - β^t.
-- Bias Correction Formula: V(t_corrected) = V<sub>t</sub><sup>corrected</sup> = V<sub>t</sub>/(1 - β<pow>t</pow>)
+- Bias Correction Formula: V<sub>t_corrected</sub> = V<sub>t</sub><sup>corrected</sup> = V<sub>t</sub>/(1 - β<pow>t</pow>)
 - During the initial phase of the moving average, bias correction significantly improves the accuracy of the estimates.
 - As t becomes large, the term β^t approaches zero, so the bias correction has less impact.
 
 <img src="Images/BiasCorrection.png" width="800">
+
+## Gradient Descent with Momentum
+Gradient Descent with Momentum is an optimization technique used to accelerate training, especially in deep neural networks.
+
+- Standard Gradient Descent can be slow and may get stuck in local minima.
+- Momentum helps the optimizer to build velocity, enabling it to move faster in relevant directions and dampen oscillations.
+
+Let:
+
+- `v` = velocity (accumulated gradient)
+- `β` = momentum hyperparameter (typically 0.9)
+- `θ` = parameters (weights)
+- `α` = learning rate
+- `∇J(θ)` = gradient of the cost function
+
+### Step-by-step:
+1. **Initialize**: `v = 0`
+2. **Update velocity**:  `v = β * v - α * ∇J(θ)`
+3. **Update parameters**:  `θ = θ + v`
+
+<img src="Images/GDExample.png" width="800">
+
+<img src="Images/GDImplement.png" width="800">
+
+# RMSprop : Root Mean Square Propogation
+
+
+
 
 
 
