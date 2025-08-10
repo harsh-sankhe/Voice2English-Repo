@@ -75,4 +75,68 @@ This process helps stabilize and accelerate training, reduces sensitivity to wei
 
 <img src="Images/ImplementBatchNorm.png" width="800">
 
+## Fitting Batch Normalization into a Neural Network
+1. Batch Normalization Step
+- Normalize the activations using the procedure described earlier (mean, variance, scaling, and shifting).
+- After normalization, apply the activation function (e.g., ReLU, Sigmoid) to the adjusted values.
+2. Forward Propagation
+- Pass the activated outputs through each layer of the network.
+- Apply Batch Normalization at each layer to keep the inputs to that layer at a consistent mean and variance. 
+3. Backpropagation
+- Compute the gradients of the loss with respect to both the weights W and the Batch Norm parameters γ (gamma) and β (beta).
+- No gradients are computed for the bias term b, as it is effectively canceled out during normalization.
+4. Parameter Updates
+- Update W, γ, and β using their respective gradients.
+- Use optimization algorithms such as Gradient Descent or Adam for efficient updates.
+5. Training Iterations
+- Repeat the forward and backward passes, continually refining the parameters to minimize the loss function.
 
+<img src="Images/AddingBatchNorm.png" width="800">
+
+<img src="Images/WorkingWithMiniBatch.png" width="800">
+
+### Implementing Gradient Descent using Batch Normalization
+
+<img src="Images/ImplementGradientDescent.png" width="800">
+
+## Why Batch Normalization Works
+1. Normalizing Inputs and Hidden Layers
+- Batch Normalization scales input features to a consistent range, allowing the network to learn faster.
+- It also normalizes activations within hidden layers, keeping their distributions stable.
+
+2. Reducing Covariate Shift
+- By controlling the distribution of hidden layer activations, Batch Norm prevents drastic shifts between layers.
+- This stabilization means changes in earlier layers have less disruptive effects on later layers.
+
+3. Improved Robustness
+- Helps the model adapt better to variations in data distribution (e.g., recognizing colored cats after training on black cats).
+- Reduces sensitivity to input shifts.
+
+4. Regularization Effect
+- Introduces small amounts of noise during training (from batch-to-batch variations), which can reduce overfitting.
+- This effect is minor compared to dropout and becomes weaker with large batch sizes.
+
+5. Training vs. Testing Behavior
+
+- Training: Uses the mean and variance of the current mini-batch for normalization.
+- Testing: Uses running averages of mean and variance collected during training for consistent results.
+
+<img src="Images/ShiftingInputDistribution.png" width="800">
+
+<img src="Images/BatchNormRegularization.png" width="800">
+
+### Batch Normalization During Testing
+- Training Phase
+  - For each mini-batch, compute the mean and variance of the activations.
+  - Normalize using these statistics, then scale and shift with the learnable parameters γ (gamma) and β (beta).
+
+- Testing Phase
+  - Since predictions are often made on single examples, use the mean and variance calculated during training instead of per-batch statistics.
+  - Maintain running (exponentially weighted) averages of the mean and variance during training.
+  - At test time, apply these stored averages to normalize inputs, ensuring consistent results.
+
+- Practical Note
+  - Modern deep learning frameworks (e.g., TensorFlow, PyTorch) handle the tracking and application of running statistics automatically.
+  - Any reasonable method for estimating these averages will generally produce stable performance.
+
+<img src="Images/BatchNormTestTime.png" width="800">
