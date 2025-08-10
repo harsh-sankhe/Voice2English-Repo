@@ -37,6 +37,8 @@ R = -4 * np.random.rand()  # Random number between -4 and 0
 
 This approach ensures finer sampling near extreme values (especially close to 1), where small changes can have a big impact.
 
+<img src="Images/ScaleForParameters.png" width="800">
+
 ## Approaches to Hyperparameter Tuning
 
 1. Babysitting Approach
@@ -49,5 +51,28 @@ Train multiple models simultaneously, each with different hyperparameter setting
   - Suitable when ample computational resources are available.
   - Speeds up the search process and is useful for large-scale tuning.
 
+<img src="Images/CaviarVsBabyModel.png" width="800">
+
+# Batch Normalization
+When training a neural network, normalizing input features (subtracting the mean and dividing by the standard deviation) helps speed up learning and improve training stability. Batch Normalization extends this concept to hidden layers — adjusting their activations so that they maintain a controlled mean and variance during training.
+
+### How it works (per mini-batch):
+
+1. Compute Mean
+- For all activations Z in a given layer, calculate the mean across the mini-batch.
+2. Compute Variance
+- Calculate the variance of these activations to measure how much they deviate from the mean.
+3. Normalize Activations
+- Subtract the mean from each activation (centering them around zero).
+- Divide by the standard deviation (√variance + small constant ε for numerical stability) so they have unit variance.
+4. Scale and Shift 
+- Multiply by a learnable parameter γ (gamma) to control the spread of the activations.
+- Add a learnable parameter β (beta) to shift the mean as needed.
+
+This process helps stabilize and accelerate training, reduces sensitivity to weight initialization, and can even have a regularizing effect.
+
+<img src="Images/NormalizeTrainingSets.png" width="800">
+
+<img src="Images/ImplementBatchNorm.png" width="800">
 
 
