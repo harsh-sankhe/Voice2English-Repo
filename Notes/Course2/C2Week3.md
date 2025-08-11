@@ -140,3 +140,127 @@ This process helps stabilize and accelerate training, reduces sensitivity to wei
   - Any reasonable method for estimating these averages will generally produce stable performance.
 
 <img src="Images/BatchNormTestTime.png" width="800">
+
+### Multi-Class Classification
+- Binary classification uses logistic regression to predict one of two possible outcomes for a given input. Here, the dependent variable has exactly two classes (e.g., 0 or 1).
+- When there are more than two possible classes, we use Softmax Regression (also called multinomial logistic regression).
+- Softmax outputs a probability for each class, with all probabilities summing to 1.
+- The class with the highest probability is chosen as the prediction.
+
+## Softmax Regression
+Softmax regression is used to classify inputs into one of C possible classes.
+- The output layer contains C units, each representing a class.
+- Each unit outputs the probability of the input belonging to its class.
+- These probabilities always sum to 1.
+- The Softmax activation function is used to convert raw scores into probabilities.
+
+How it works:
+
+1. Raw Score Calculation
+
+For the final layer, compute:
+
+`Z=W⋅(activation from previous layer)+b`
+
+where W is the weight matrix and b is the bias vector.
+
+2. Exponentiation
+
+For each score Z(i), calculate:
+
+`T(i)=e^Z(i)`
+ 
+3. Normalization (Softmax Function)
+
+Convert scores into probabilities:
+
+`a(i) = e^Z(i)/Σ(e^Z(j))`
+  
+where a(i) is the probability of class i, and the denominator is the sum of exponentiated scores for all C classes.
+
+The class with the highest probability is chosen as the prediction.
+
+<img src="Images/SoftmaxLayer.png" width="800">
+
+<img src="Images/SoftmaxExamples.png" width="800">
+
+# Training a Softmax Classifier
+
+## Softmax vs. Hard Max
+- **Softmax**: Produces a probability distribution over all classes (probabilities sum to 1).
+- **Hard Max**: Assigns probability 1 to the class with the highest score, and 0 to all others.
+
+## Training Steps
+
+### 1. Raw Score Calculation
+\[
+Z = W \cdot (\text{activation from previous layer}) + b
+\]
+- `W`: Weight matrix  
+- `b`: Bias vector  
+
+### 2. Apply Softmax Activation
+1. **Exponentiate Scores**:  
+   \[
+   T(i) = e^{Z(i)}
+   \]
+2. **Normalize**:  
+   \[
+   a(i) = \frac{e^{Z(i)}}{\sum_{j=1}^{C} e^{Z(j)}}
+   \]
+   - \( a(i) \): Probability for class \( i \)  
+   - \( C \): Total number of classes  
+
+### 3. Define Loss Function
+**Cross-Entropy Loss**:  
+- For one example:  
+  \[
+  L = -\log(p(y))
+  \]
+- For \( m \) examples:  
+  \[
+  J = -\frac{1}{m} \sum_{i=1}^{m} y^{(i)} \cdot \log(p^{(i)})
+  \]
+  - \( y \): One-hot encoded true label  
+  - \( p \): Predicted probability  
+
+### 4. Compute Gradients
+\[
+\frac{\partial J}{\partial Z} = \hat{Y} - Y
+\]
+- \( \hat{Y} \): Predicted probabilities  
+- \( Y \): One-hot encoded true labels  
+
+### 5. Update Parameters
+Using Gradient Descent (or Adam, SGD, etc.):  
+\[
+W := W - \alpha \cdot \frac{\partial J}{\partial W}
+\]
+\[
+b := b - \alpha \cdot \frac{\partial J}{\partial b}
+\]
+- \( \alpha \): Learning rate  
+
+### 6. Iterate Until Convergence
+Repeat Steps 1–5 until:  
+- Loss function reaches a minimum  
+- Or maximum iterations are completed  
+
+<img src="Images/LossFunction.png" width="800">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
