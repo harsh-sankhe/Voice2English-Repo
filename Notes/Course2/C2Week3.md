@@ -184,68 +184,47 @@ The class with the highest probability is chosen as the prediction.
 
 <img src="Images/SoftmaxExamples.png" width="800">
 
-# Training a Softmax Classifier
+### Training a softmax classifier:
+- Softmax vs. Hard Max:
+  - Softmax assigns probabilities based on input values.All probabilities sum to 1.
+  - Hard Max Strictly assigns a 1 to the category with the highest value and 0 to all other categories.
+- How Softmax Classifier is trained:
+  - 1. Input to Output Layer:
+       - Raw Scores (Z) Calculation:
+         - Compute Z for the final layer:
+         - `𝑍=𝑊⋅activation of previous layer+𝑏`
+         - Where W is the weight matrix and b is the bias vector.
 
-## Softmax vs. Hard Max
-- **Softmax**: Produces a probability distribution over all classes (probabilities sum to 1).
-- **Hard Max**: Assigns probability 1 to the class with the highest score, and 0 to all others.
+  - 2. Apply Softmax Activation Function:
+        - We calculate a temporary variable called `T` by taking the exponential of the values in the output layer.
+        - Compute element-wise exponentiation: `T(i) = e^Z(i)`.
+        - Then we apply normalization to all exponentiated values T in the output layer such that they add up to 1. This gives us the probabilities for each category.
+        - The normalization means the probablity of each T(i) value in output layer which is :
+           - `a(i) = e^Z(i)/Σ(e^Z(j))` where j ranges from 1 to C.
+           - Where a(i) is the probability for class i and the denominator is the sum of exponentiated scores for all classes. 
 
-## Training Steps
+  - 3. Define Loss Function:
+   - Use the cross-entropy loss function for softmax classification.
+     - For a single training example with target class `y` and predicted probabilities `p`, the loss is:
+       - `L = -log(p(y))`
+     - For the entire training set, the loss function is the average cross-entropy loss over all examples:
+       - `J = -1/m Σ (y * log(p))` where `m` is the number of training examples.
 
-### 1. Raw Score Calculation
-\[
-Z = W \cdot (\text{activation from previous layer}) + b
-\]
-- `W`: Weight matrix  
-- `b`: Bias vector  
+  - 4. Compute Gradients:
+    - Compute the gradients of the loss function with respect to the weights and biases.
+    - The derivative of the cost with respect to `Z` at the last layer is:
+     - `∂J/∂Z = Y_hat - Y`
+     - Where `Y_hat` is the predicted probabilities and `Y` is the one-hot encoded true labels.
 
-### 2. Apply Softmax Activation
-1. **Exponentiate Scores**:  
-   \[
-   T(i) = e^{Z(i)}
-   \]
-2. **Normalize**:  
-   \[
-   a(i) = \frac{e^{Z(i)}}{\sum_{j=1}^{C} e^{Z(j)}}
-   \]
-   - \( a(i) \): Probability for class \( i \)  
-   - \( C \): Total number of classes  
+  - 5. Update Parameters:
+   - Use gradient descent or a variant (such as SGD, Adam, etc.) to update the weights and biases.
+   - The parameters are updated as follows:
+     - `W = W - learning_rate * ∂J/∂W`
+     - `b = b - learning_rate * ∂J/∂b`
 
-### 3. Define Loss Function
-**Cross-Entropy Loss**:  
-- For one example:  
-  \[
-  L = -\log(p(y))
-  \]
-- For \( m \) examples:  
-  \[
-  J = -\frac{1}{m} \sum_{i=1}^{m} y^{(i)} \cdot \log(p^{(i)})
-  \]
-  - \( y \): One-hot encoded true label  
-  - \( p \): Predicted probability  
-
-### 4. Compute Gradients
-\[
-\frac{\partial J}{\partial Z} = \hat{Y} - Y
-\]
-- \( \hat{Y} \): Predicted probabilities  
-- \( Y \): One-hot encoded true labels  
-
-### 5. Update Parameters
-Using Gradient Descent (or Adam, SGD, etc.):  
-\[
-W := W - \alpha \cdot \frac{\partial J}{\partial W}
-\]
-\[
-b := b - \alpha \cdot \frac{\partial J}{\partial b}
-\]
-- \( \alpha \): Learning rate  
-
-### 6. Iterate Until Convergence
-Repeat Steps 1–5 until:  
-- Loss function reaches a minimum  
-- Or maximum iterations are completed  
-
+  - 6. Iterate Until Convergence:
+    - Repeat steps 1-5 for a number of iterations or until the loss converges to a minimum value.
+    
 <img src="Images/LossFunction.png" width="800">
 
 
