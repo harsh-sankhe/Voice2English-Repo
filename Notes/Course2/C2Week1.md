@@ -1,10 +1,11 @@
 ## Train/Dev/Test Sets
 
-- **Training Set** – Used to train the model and learn its parameters.
-- **Development (Dev) Set** – Used to tune hyperparameters and compare models.
-- **Test Set** – Used for final unbiased evaluation of selected model.
+Dataset are split into three sets : 
+- **Training Set** – Used to train the model and learn parameters.
+- **Development (Dev) Set** – Used to tune hyperparameters and compare which model works best.
+- **Test Set** – Used for final evaluation of selected model.
 
-### Dataset Splits
+### Spliting Ratio 
 
 - **Small Datasets** – (70% Train / 30% Test) or (60% Train / 20% Dev / 20% Test)
 - **Large Datasets** – (98% Train / 1% Dev / 1% Test)
@@ -16,8 +17,8 @@
 
 ### Bias and Variance
 
-- **Variance**: refers to how well our algorithm generalizes to new, unseen data.
-- **Bias**: Refers to the error and to how well our algorithm fits the training data.
+- **Variance**: Error from overfitting the model to training data, making it too sensitive to small changes.
+- **Bias**: Error from oversimplifying the model, causing it to miss important patterns (underfitting).
 
 #### Train Set and Dev Set Error
 
@@ -26,8 +27,8 @@
 
 #### Underfitting and Overfitting
 
-- **Underfitting** = Poor performance on training and test sets.
-- **Overfitting** = Good training performance i.e. it starts to memorize the training data but poor generalization.
+- **Underfitting** = When a model is too simple to capture the underlying patterns in the data. The model has poor performance on training and test sets.
+- **Overfitting** = When a model learns too much from the training data, including noise and random fluctuations. The model has Excellent performance on training data but poor performance on unseen test data.
 
 ![alt text](images/image5.png)
 
@@ -35,7 +36,7 @@
 
 #### Error Diagnosis Table
 
-| Training Error | Dev Set Error | Diagnosis                        | Train Set Error % | Dev Set Error % |
+| Training Error | Dev Set Error | Model Behaviour                      | Train Set Error % | Dev Set Error % |
 |----------------|----------------|----------------------------------|--------------------|------------------|
 | High           | High           | High bias (underfitting)         | 15%                | 16%              |
 | Low            | High           | High variance (overfitting)      | 1%                 | 11%              |
