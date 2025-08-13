@@ -53,6 +53,43 @@ Edge detection is a fundamental step in understanding the structure of an image.
 
 <img src="Images/VED2.png">
 
+## Padding in Convolutional Neural Networks (CNNs)
+
+**Concept:**  
+Padding is the process of adding extra pixels around the border of an image before applying convolution. It helps preserve the spatial dimensions of the input and reduces information loss from the edges.
+
+**Problems Without Padding:**
+
+1. **Image Shrinkage:**  
+   - Example: Convolving a **6×6** image with a **3×3** filter produces a **4×4** output.  
+   - Reason: The filter can only be placed in positions where it fully fits inside the image.  
+   - Formula (no padding):  
+     \[
+     \text{Output size} = (n - f + 1) \times (n - f + 1)
+     \]  
+     where:
+       - \(n\) = input size  
+       - \(f\) = filter size  
+
+2. **Loss of Edge Information:**  
+   - Edge and corner pixels appear in fewer receptive fields during convolution.  
+   - Central pixels are used in more filter regions, giving them more influence.  
+   - This causes important boundary details to be lost.
+
+**Padding Solution:**  
+- Add extra pixels (often zeros) around the image border before convolution.  
+- Benefits:  
+  - Preserves the original input size after convolution.  
+  - Ensures that edge pixels contribute equally to the output.
+
+**General Formula (with padding \(p\)):**  
+\[
+\text{Output size} = (n + 2p - f + 1) \times (n + 2p - f + 1)
+\]  
+where:
+- \(p\) = number of padding pixels on each side  
+
+
 
 
 
