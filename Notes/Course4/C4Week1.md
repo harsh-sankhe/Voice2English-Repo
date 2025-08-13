@@ -11,7 +11,9 @@ In Convolutional Neural Networks, *convolution* is the process of applying a sma
 Imagine a **6×6 grayscale image** (one channel). To detect vertical edges, you could design a **3×3 filter** such as: 
 
 `1  0 -1`
+
 `1  0 -1`
+
 `1  0 -1`
 
 
