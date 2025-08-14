@@ -19,16 +19,13 @@ Start with a broad search over a wide value range, then focus on promising regio
 
 <img src="images/ctofine.png" width="800">
 
-### Choosing the Right Scale 
 Choosing the correct scale for hyperparameters is crucial, as it can significantly influence the training process and final performance of a model.
-
 - For hyperparameters with a small countable and narrow range (hidden units: 50–100, layers: 2–4), we use **uniform scaling** as each value is equally likely to exist.
 - For hyperparameters with a wide range (learning rate α, decay rates β), we use **logarithmic scaling** to avoid oversampling some regions and neglecting others.
 
 Example:
 
-If α ranges from 0.0001 to 1, uniform sampling would concentrate most values between 0.1 and 1, skipping much of the lower end.
-thus we prefer using logarithmic scaling ( evenly sampling )
+If α ranges from 0.0001 to 1, uniform sampling would concentrate most values between 0.1 and 1, skipping much of the lower end, thus we prefer using logarithmic scaling ( evenly sampling )
 
 0.0001 can be written as 10^-4
 R = -4 * np.random.rand()  
@@ -43,13 +40,11 @@ This approach ensures even sampling near extreme values (especially close to 1),
 
 ### Approaches to Hyperparameter Tuning
 
-1. Babysitting Approach
-Train a single model at a time, adjust the hyperparameters, and closely monitor its performance.
+1. Babysitting Approach : Train a single model at a time, adjust the hyperparameters, and closely monitor its performance.
   - Best suited when limited computational resources are avaiable.
   - Allows for careful observation and manual fine-tuning.
 
-2. Parallel Training
-Train multiple models simultaneously, each with different hyperparameter settings, and compare their results to identify the best configuration.
+2. Parallel Training : Train multiple models simultaneously, each with different hyperparameter settings, and compare their results to identify the best configuration.
   - Suitable when ample computational resources are available.
   - Speeds up the search process and is useful for large-scale tuning.
 
@@ -57,22 +52,18 @@ Train multiple models simultaneously, each with different hyperparameter setting
 Batch Normalization is a technique used to speed up training and improve stability in deep neural networks by normalizing the inputs to each layer.
 Normalizing input features means (subtracting the mean and dividing by the standard deviation) helping to speed up learning and improve training stability.
 
+![alt text](images/imag1.png)  
+
 ### How it works (per mini-batch):
 
-1. Compute Mean - For all activations Z in a given layer, calculate the mean across the mini-batch.
-2. Compute Variance - Calculate the variance of these activations to measure how much they deviate from the mean.
-3. Normalize Activations
-- Subtract the mean from each activation
-- Divide by the standard deviation so they have unit variance.
-4. Scale and Shift 
-- Multiply by a learnable parameter γ (gamma) to control the spread of the activations.
-- Add a learnable parameter β (beta) to shift the mean as needed.
+1. For all activations Z in a given layer, calculate the mean across the mini-batch.
+2. Calculate the variance of these activations to measure how much they deviate from the mean.
+3. Subtract the mean from each activation and Divide by the standard deviation so they have unit variance. (Normalizing Activations)
+4. Multiply by a learnable parameter γ (gamma) to control the spread of the activations and Add a learnable parameter β (beta) to shift the mean as needed.
 
-<img src="images/formula.png" width="800">
+![alt text](images/imag2.png)
 
-<img src="images/imple.png" width="800">
-
-## Fitting Batch Normalization into a Neural Network
+### Fitting Batch Normalization into a Neural Network
 1. Batch Normalization Step
 - Normalize the activations using the procedure described earlier (mean, variance, scaling, and shifting).
 - After normalization, apply the activation function (e.g., ReLU, Sigmoid) to the adjusted values.
@@ -88,15 +79,15 @@ Normalizing input features means (subtracting the mean and dividing by the stand
 5. Training Iterations
 - Repeat the forward and backward passes, continually refining the parameters to minimize the loss function.
 
-<img src="Images/AddingBatchNorm.png" width="800">
+![alt text](images/image-2.png)
 
-<img src="Images/WorkingWithMiniBatch.png" width="800">
+![alt text](images/image-3.png)
 
 ### Implementing Gradient Descent using Batch Normalization
 
-<img src="Images/ImplementGradientDescent.png" width="800">
+![alt text](images/image-1.png)
 
-# Why Does Batch Normalization Work?
+## Why Does Batch Normalization Work?
 1. Normalizing Input Features
 - Ensures that input features are scaled to a similar range.
 - Speeds up learning by keeping feature distributions consistent across the network.
@@ -113,11 +104,7 @@ Normalizing input features means (subtracting the mean and dividing by the stand
 - Training: Uses the mean and variance of the current mini-batch for normalization.
 - Testing: Uses running averages of mean and variance collected during training for consistent results.
 
-
-<img src="Images/ShiftingInputDistribution.png" width="800">
-
-<img src="Images/BatchNormRegularization.png" width="800">
-
+![alt text](images/test.png)
 
 ### Multi-Class Classification
 - Binary classification uses logistic regression to predict one of two possible outcomes for a given input. (e.g., 0 or 1).
