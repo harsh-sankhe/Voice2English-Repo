@@ -66,8 +66,10 @@ It is a balance between a **simple model** (high bias, low variance) and a **com
 ## Regularization
 
 - Regularization is a technique used in machine learning to prevent overfitting by adding a penalty to the loss function.  
-- It is used to reduce overfitting (high variance), especially when getting more training data is difficult or expensive.  
-- It penalizes large weight parameters, and the penalty strength is controlled by the regularization parameter **λ**.
+- Especially used when getting more training data is difficult or expensive.  
+- It penalizes large weight parameters
+- The penalty strength is controlled by the regularization parameter **λ**. 
+
 
 ### L2 Regularization (Weight Decay)
 - Adds **(λ / 2m) * ||w||²** to the cost function.
@@ -114,6 +116,15 @@ By applying regularization, neural networks learn smoother functions, reduce com
 
 ---
 
+## Why Regularization is necessary ?
+- When a neural network learns both the true patterns and the noise in the training data, it performs well on training data but poorly on unseen data. Regularization adds a penalty to the cost function, discouraging large weights. This forces the model to stay simpler, focus on genuine patterns, and avoid memorizing noise.
+- When regularization parameter (λ) has high value it penalizes large weights more strongly thus limiting the model’s complexity. This reduces the model's ability to overfit and improves generalization.
+
+---
+
+## Dropout Regularization
+
+
 ## Other Regularization Methods
 
 ### Data Augmentation
@@ -122,11 +133,9 @@ Data augmentation artificially increases the size of the training dataset by app
 
 Common techniques include: **Horizontal flipping**,**Random rotations**,**Random cropping** etc.
 
-> These techniques help reduce overfitting by creating new "fake" examples from existing data, without requiring new independent data.
-
 ### Early Stopping
 
-Early stopping monitors the model's performance on a dev set during training. If the error starts increasing indicating overfitting, training is stopped early. This prevents the model from **memorizing** the training data ans saves training time and **improves generalization** to unseen data.
+Early stopping monitors the model's performance on a dev set during training. If the error starts increasing indicating overfitting, training is stopped early. This prevents the model from **memorizing** the training data and saves training time and **improves generalization** to unseen data.
 
 - Both of these techniques are simple yet powerful tools for building more robust neural networks, especially when data is limited.
 
