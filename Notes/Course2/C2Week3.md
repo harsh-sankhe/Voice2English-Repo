@@ -1,25 +1,25 @@
 # Hyperparameter
-Hyperparameters are the parameters that guide us during the training process. Unlike model parameters, they are not learned from the training data — instead, they are set beforehand and can be tuned accordingly to improve performance.
-
-They influence how the model’s parameters are updated during training. 
+- Hyperparameters are the parameters that guide us during the training process. Unlike model parameters, they are not learned from the training data — instead, they are set beforehand and can be tuned accordingly to improve performance. They influence how the model’s parameters are updated during training. 
 
 Important hyperparameters include:
 - *Learning Rate* - controls how fast the network learns on the data. Most critical hyperparameter.
 - *Momentum term* – accelerate the training process and reduces oscillations.
 - *Mini-batch size* – determines the number of examples processed before each parameter update.
 - *Regularization parameters* – such as L2 penalty, L1 or dropout rate to prevent overfitting.
+- *Activation function selection* – e.g., ReLU, sigmoid, tanh, softmax etc.
 - *Number of hidden layers*
 - *Number of neurons per layer*
-- *Activation function selection* – e.g., ReLU, sigmoid, tanh, softmax etc.
 
 ## Hyperparameter Tuning
 Earlier, hyperparameter tuning often used grid search, testing evenly spaced all combinations, but it became inefficient as number of hyperparameters increased.
 Now **Random Sampling** has taken over grid-search , it picks random values for parameters and covers more possibilities and is more efficient, especially when it’s unclear which hyperparameters will have the greatest impact.
 
-## Coarse-to-Fine Search
+### Coarse-to-Fine Search
 Start with a broad search over a wide value range, then focus on promising regions with finer sampling. This systematic approach helps identify the hyperparameter combination that best optimizes network performance.
 
-## Choosing the Right Scale 
+<img src="images/ctofine.png" width="800">
+
+### Choosing the Right Scale 
 Choosing the correct scale for hyperparameters is crucial, as it can significantly influence the training process and final performance of a model.
 
 - For hyperparameters with a small countable and narrow range (hidden units: 50–100, layers: 2–4), we use **uniform scaling** as each value is equally likely to exist.
@@ -34,14 +34,14 @@ thus we prefer using logarithmic scaling ( evenly sampling )
 R = -4 * np.random.rand()  
 α = 10 ** R                
 1 can be written as 10^0
-# Random number between -4 and 0
-# Learning rate between 10^-4 and 1
+- Random number between -4 and 0
+- Learning rate between 10^-4 and 1
 
 This approach ensures even sampling near extreme values (especially close to 1), where small changes can have a big impact.
 
 <img src="images/logscale.png" width="800">
 
-## Approaches to Hyperparameter Tuning
+### Approaches to Hyperparameter Tuning
 
 1. Babysitting Approach
 Train a single model at a time, adjust the hyperparameters, and closely monitor its performance.
@@ -53,21 +53,17 @@ Train multiple models simultaneously, each with different hyperparameter setting
   - Suitable when ample computational resources are available.
   - Speeds up the search process and is useful for large-scale tuning.
 
-<img src="Images/CaviarVsBabyModel.png" width="800">
-
-# Batch Normalization
+## Batch Normalization
 Batch Normalization is a technique used to speed up training and improve stability in deep neural networks by normalizing the inputs to each layer.
 Normalizing input features means (subtracting the mean and dividing by the standard deviation) helping to speed up learning and improve training stability.
 
 ### How it works (per mini-batch):
 
-1. Compute Mean
-- For all activations Z in a given layer, calculate the mean across the mini-batch.
-2. Compute Variance
-- Calculate the variance of these activations to measure how much they deviate from the mean.
+1. Compute Mean - For all activations Z in a given layer, calculate the mean across the mini-batch.
+2. Compute Variance - Calculate the variance of these activations to measure how much they deviate from the mean.
 3. Normalize Activations
-- Subtract the mean from each activation (centering them around zero).
-- Divide by the standard deviation (√variance + small constant ε for numerical stability) so they have unit variance.
+- Subtract the mean from each activation
+- Divide by the standard deviation so they have unit variance.
 4. Scale and Shift 
 - Multiply by a learnable parameter γ (gamma) to control the spread of the activations.
 - Add a learnable parameter β (beta) to shift the mean as needed.
