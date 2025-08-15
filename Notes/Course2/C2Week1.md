@@ -124,6 +124,33 @@ By applying regularization, neural networks learn smoother functions, reduce com
 
 ## Dropout Regularization
 
+**Dropout** is a regularization technique where, during training, we randomly "drop" a subset of neurons in each layer.  
+For each training example, a different set of neurons is dropped, forcing the network to learn more robust and generalized features rather than relying on specific neurons.
+
+This process helps **prevent overfitting** by training multiple smaller, randomly modified sub-networks within the main network.
+
+![alt text](images/image-6.png)
+
+### How Dropout Works
+
+1. **Choose the Dropout Probability** - Define a hyperparameter called **`keep_prob`**, representing the probability that a neuron is kept active during training.  
+   Example: `keep_prob = 0.8` means each neuron has an 80% chance of staying on.
+
+2. **Create a Dropout Mask**  
+   For a layer’s activation matrix **A**, generate a random binary mask **D** of the same shape.  
+   Each element of **D** is:
+   - `1` → neuron is kept (with probability `keep_prob`)
+   - `0` → neuron is dropped  
+   This mask determines which neurons are active in the current training step.
+
+3. **Apply the Dropout Mask**  
+   Multiply the activation matrix element-wise with the mask:  
+   ```python
+   A_dropout = A * D
+
+4. To ensure the overall activation magnitude remains stable, divide by keep_prob: A_scaled = A_dropout / keep_prob
+
+---
 
 ## Other Regularization Methods
 
@@ -145,9 +172,10 @@ Early stopping monitors the model's performance on a dev set during training. If
 
 Normalization ensures that all input features are on a similar scale, which significantly speeds up the training process and improves convergence.THis process is also called as feature scaling.
 
-#### Steps in Normalization:
 
 ![alt text](images/image4.png)
+
+#### Steps in Normalization:
 
 1. **Mean Subtraction**:  
    Subtract the **mean** μ from each feature in the training set. This centers the data around zero (zero mean).
@@ -173,5 +201,72 @@ Normalization ensures that all input features are on a similar scale, which sign
 
 ---
 
-## Vanishing/ Exploding Gradient
+## Vanishing/ Exploding Gradients
 
+- *General Idea* : While training very deep neural networks sometimes the dervatiives while backpropogation can get very big or very small thus making the training process difficult.
+- When the weight matrix 'W' for each layer is initialized to be slightly larger than the identity matrix, the output of the network increases exponentially with the number of layers. This is known as the problem of exploding gradients.
+Gradients large causing numerical instability thus making it difficult for the network to train making gradient descent very slow.
+- When the weight matrix 'W' for each layer is initialized to be slightly smaller than the identity matrix, the output of the network decreases exponentially with the number of layers. This is known as the problem of vanishing gradients.
+This means activations and gradients decrease exponentially, making it hard for the network to learn.
+
+To deal with this it is important to be careful when initializing weights in each layer.
+
+<img src="images/imag5.png" width="800">
+
+In very deep neural networks, gradients can sometimes:
+- Become extremely small (vanishing gradients)
+- Or grow excessively large (exploding gradients)
+
+#### Smart Weight Initialization
+
+Instead of initializing weights randomly , we use specific strategies that help control the scale of the outputs and gradients.
+
+### Gaussian Initialization with Scaled Variance
+
+- Initialize weights using a **Gaussian (normal) distribution**.
+- But scale the variance depending on the number of inputs (n) to each neuron.
+
+-If we have a neuron with n input features
+- With tanh activation function, set the variance of the weights to 1/n
+- With ReLU activation function, set the variance of the weights to be 2/n.
+
+<img src="images/image-8.png" width="800">
+
+# Numerical Approximation of Gradients
+
+- Gradient checking is an technique used to verify the correctness of your backpropagation implementation in neural networks.
+- Done by estimating the gradient numerically and comparing it to the one calculated using backpropagation.
+
+<img src="images/image-7.png" width="800">
+
+### Two-Sided Difference Method
+
+To numerically estimate the gradient of a function `f` with respect to a parameter `θ`, we use the following formula: `g(θ) ≈ [f(θ + ε) - f(θ - ε)] / (2 * ε)`
+
+Where:
+- `θ` is the parameter (like a weight or bias).
+- `ε` is a small constant (e.g., `1e-7`).
+- `f(θ)` is the cost function evaluated at that parameter.
+
+Instead of one-sided difference (f(θ + ε)) two-sided is preferred due to more accuracy.
+
+# Gradient Checking:
+- Gradient checking helps ensure that the gradients computed by your backpropagation implementation are correct. It does this by comparing them to numerically approximated gradients.
+- Reshape and concatenate:
+  - The first step involves reshaping the parameters i.e the weights (W) and biases (B). We convert these to vectors and then concatenate these into a big vector 'θ'.
+  - We perform the same operation on the dervatives of W and B and store them in a vector dθ.
+  - Cost Function: So instead of the cost function J being a function of the weights and biases it will be a function of θ.
+- Approximating the derivatives:
+  - We want to check if the derivatives of J with respect to theta (dθ) are correct. To do this,we implement loop and then we compute an approximation of dθ for each component of θ using a two-sided difference as defined above.
+- Comparing the vectors:
+  - We compare the computed dθ approx with the actual derivative dθ. If they are approximately equal, it means our derivative approximation is likely correct.
+
+<img src="images/image-9.png" width="800">
+
+## Gradient Checking – Implementation Notes
+
+- Use only for debugging, not during actual training.
+- If gradient check fails, inspect each layer/component individually.
+- Include regularization terms in both cost and gradient calculations.
+- Do not use with dropout – it introduces randomness and breaks consistency.
+- Run at random initialization, and optionally after some training steps.
