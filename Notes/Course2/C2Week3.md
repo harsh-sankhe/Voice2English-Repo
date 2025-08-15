@@ -10,14 +10,20 @@ Important hyperparameters include:
 - *Number of hidden layers*
 - *Number of neurons per layer*
 
+---
+
 ## Hyperparameter Tuning
 Earlier, hyperparameter tuning often used grid search, testing evenly spaced all combinations, but it became inefficient as number of hyperparameters increased.
 Now **Random Sampling** has taken over grid-search , it picks random values for parameters and covers more possibilities and is more efficient, especially when it’s unclear which hyperparameters will have the greatest impact.
+
+---
 
 ### Coarse-to-Fine Search
 Start with a broad search over a wide value range, then focus on promising regions with finer sampling. This systematic approach helps identify the hyperparameter combination that best optimizes network performance.
 
 <img src="images/ctofine.png" width="800">
+
+---
 
 Choosing the correct scale for hyperparameters is crucial, as it can significantly influence the training process and final performance of a model.
 - For hyperparameters with a small countable and narrow range (hidden units: 50–100, layers: 2–4), we use **uniform scaling** as each value is equally likely to exist.
@@ -38,6 +44,8 @@ This approach ensures even sampling near extreme values (especially close to 1),
 
 <img src="images/logscale.png" width="800">
 
+---
+
 ### Approaches to Hyperparameter Tuning
 
 1. Babysitting Approach : Train a single model at a time, adjust the hyperparameters, and closely monitor its performance.
@@ -47,6 +55,8 @@ This approach ensures even sampling near extreme values (especially close to 1),
 2. Parallel Training : Train multiple models simultaneously, each with different hyperparameter settings, and compare their results to identify the best configuration.
   - Suitable when ample computational resources are available.
   - Speeds up the search process and is useful for large-scale tuning.
+
+---
 
 ## Batch Normalization
 Batch Normalization is a technique used to speed up training and improve stability in deep neural networks by normalizing the inputs to each layer.
@@ -83,9 +93,13 @@ Normalizing input features means (subtracting the mean and dividing by the stand
 
 ![alt text](images/image-3.png)
 
+---
+
 ### Implementing Gradient Descent using Batch Normalization
 
 ![alt text](images/image-1.png)
+
+---
 
 ## Why Does Batch Normalization Work?
 1. Normalizing Input Features
@@ -106,11 +120,15 @@ Normalizing input features means (subtracting the mean and dividing by the stand
 
 ![alt text](images/test.png)
 
+---
+
 ### Multi-Class Classification
 - Binary classification uses logistic regression to predict one of two possible outcomes for a given input. (e.g., 0 or 1).
 - When there are more than two possible classes, we use Softmax Regression (also called multinomial logistic regression).
 - Softmax outputs a probability for each class, with all probabilities summing to 1.
 - The class with the highest probability is chosen as the prediction.
+
+--- 
 
 ## Softmax Regression
 Softmax Regression (also called multinomial logistic regression) is a generalization of logistic regression for multi-class classification problems.
@@ -139,6 +157,8 @@ where a(i) is the probability of class i, and the denominator is the sum of expo
 The class with the highest probability is chosen as the prediction.
 
 <img src="images/Softmaxlayer.png" width="800">
+
+---
 
 ### Training a softmax classifier:
 
@@ -183,3 +203,5 @@ Steps to Train a Softmax Classifier:
     - Repeat steps 1-5 for a number of iterations or until the loss converges to a minimum value.
     
 <img src="images/LossFunction.png" width="800">
+
+---

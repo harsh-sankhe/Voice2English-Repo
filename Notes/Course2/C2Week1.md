@@ -241,7 +241,8 @@ Instead of initializing weights randomly , we use specific strategies that help 
 
 ### Two-Sided Difference Method
 
-To numerically estimate the gradient of a function `f` with respect to a parameter `θ`, we use the following formula: `g(θ) ≈ [f(θ + ε) - f(θ - ε)] / (2 * ε)`
+To numerically estimate the gradient of a function `f` with respect to a parameter `θ`, we use the following formula:
+ `g(θ) ≈ [f(θ + ε) - f(θ - ε)] / (2 * ε)`
 
 Where:
 - `θ` is the parameter (like a weight or bias).
@@ -250,23 +251,34 @@ Where:
 
 Instead of one-sided difference (f(θ + ε)) two-sided is preferred due to more accuracy.
 
-# Gradient Checking:
-- Gradient checking helps ensure that the gradients computed by your backpropagation implementation are correct. It does this by comparing them to numerically approximated gradients.
-- Reshape and concatenate:
-  - The first step involves reshaping the parameters i.e the weights (W) and biases (B). We convert these to vectors and then concatenate these into a big vector 'θ'.
-  - We perform the same operation on the dervatives of W and B and store them in a vector dθ.
-  - Cost Function: So instead of the cost function J being a function of the weights and biases it will be a function of θ.
-- Approximating the derivatives:
-  - We want to check if the derivatives of J with respect to theta (dθ) are correct. To do this,we implement loop and then we compute an approximation of dθ for each component of θ using a two-sided difference as defined above.
-- Comparing the vectors:
-  - We compare the computed dθ approx with the actual derivative dθ. If they are approximately equal, it means our derivative approximation is likely correct.
+
+## Gradient Checking
+Gradient checking ensures that the gradients computed by your **backpropagation** implementation are correct.  
+It works by comparing **analytically computed gradients** with **numerically approximated gradients**.
+
+1. **Reshape and Concatenate**  
+   - Reshape all parameters — weights (**W**) and biases (**B**) — into one vector **θ**.
+   - Do the same for the gradients (**dW**, **dB**) to form a vector **dθ**.  
+   - The cost function **J** is now treated as a function of **θ** instead of individual **W** and **B**.
+
+2. **Approximate the Derivatives**  
+   - For each element of **θ**, compute the numerical gradient using the **two-sided difference method**:  
+     ```
+     g(θ) ≈ [J(θ + ε) - J(θ - ε)] / (2 * ε)
+     ```
+   - Store these numerical gradients in a vector **dθ_approx**.
+
+3. **Compare the Vectors**  
+   - Compare **dθ** (from backprop) with **dθ_approx** (numerical approximation) using a distance metric such as:
+     ```
+     difference = ||dθ - dθ_approx|| / (||dθ|| + ||dθ_approx||)
+     ```
+   - If the difference is small (e.g., < 1e-7), the gradients are likely correct.
 
 <img src="images/image-9.png" width="800">
 
 ## Gradient Checking – Implementation Notes
 
 - Use only for debugging, not during actual training.
-- If gradient check fails, inspect each layer/component individually.
 - Include regularization terms in both cost and gradient calculations.
-- Do not use with dropout – it introduces randomness and breaks consistency.
-- Run at random initialization, and optionally after some training steps.
+- If gradient check fails, inspect each layer/component individually.
