@@ -92,7 +92,7 @@ L(A, P, N) = max(0, d(A, P) - d(A, N) + α)
 
 - Minimizing this loss ensures that **same-person encodings are closer** and **different-person encodings are farther apart**.
 
-<img src="Images/LO1" width="800">
+<img src="Images/LO1.png" width="800">
 
 <img src="Images/LossFuc.png" width="800">
 
